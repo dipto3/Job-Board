@@ -34,13 +34,14 @@
                                 </div>
 
                                 <div class="account-content mt-4">
-                                    <form class="form-horizontal" action="#">
+                                    <form class="form-horizontal" action="{{ route('login') }}" method="post">
+                                        @csrf
 
                                         <div class="form-group row">
                                             <div class="col-12">
                                                 <label for="emailaddress">Email address</label>
-                                                <input class="form-control" type="email" id="emailaddress"
-                                                    required="" placeholder="john@deo.com">
+                                                <input class="form-control" type="email" name="email"
+                                                    id="emailaddress" required="" placeholder="john@deo.com">
                                             </div>
                                         </div>
 
@@ -50,8 +51,8 @@
                                                     class="text-muted float-right"><small>Forgot your
                                                         password?</small></a>
                                                 <label for="password">Password</label>
-                                                <input class="form-control" type="password" required=""
-                                                    id="password" placeholder="Enter your password">
+                                                <input class="form-control" type="password" name="password"
+                                                    required="" id="password" placeholder="Enter your password">
                                             </div>
                                         </div>
 

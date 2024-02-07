@@ -89,8 +89,7 @@
                 </div>
 
                 <!-- All-->
-                <a href="javascript:void(0);"
-                    class="dropdown-item text-center text-primary notify-item notify-all">
+                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
                     View all
                     <i class="fi-arrow-right"></i>
                 </a>
@@ -120,10 +119,13 @@
                 <div class="dropdown-divider"></div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="fe-log-out"></i>
-                    <span>Logout</span>
-                </a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
 
             </div>
         </li>

@@ -20,3 +20,5 @@ Route::get('/', function () {
 });
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
+Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('login');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
