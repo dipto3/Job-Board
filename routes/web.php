@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
