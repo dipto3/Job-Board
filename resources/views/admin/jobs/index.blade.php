@@ -27,7 +27,7 @@
                     <div class="col-12">
                        
                         <div class="card-box table-responsive">
-                            <button style="float: right;" type="button" class="btn btn-info waves-effect waves-light">Add New<i class="mdi mdi-plus"></i></button>
+                            <a  href="{{ route('job.create') }}" style="float: right;color:white;" type="button" class="btn btn-info waves-effect waves-light">Add New<i class="mdi mdi-plus"></i></a>
                                 <h4 class="header-title">Default Example</h4>
                             <p class="sub-header">
                                 DataTables has most 

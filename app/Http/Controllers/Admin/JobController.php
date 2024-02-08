@@ -13,4 +13,10 @@ class JobController extends Controller
 
         return view(self::moduleDirectory . 'index', );
     }
+
+    public function create()
+    {
+
+        return view(self::moduleDirectory . 'create', );
+    }
 }
