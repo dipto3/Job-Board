@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyAuthController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,10 @@ Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name(
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
 Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('login');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/register', [CompanyAuthController::class, 'registerPage']);
+Route::post('/register',[CompanyAuthController::class,'registerpost']);
+Route::get('/login-page',[CompanyLoginController::class,'loginpage']);
+Route::post('/login',[CompanyLoginController::class,'loginpost']);
+
