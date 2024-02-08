@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Frontend Routes...
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
+
 //Admin routes...
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 //Admin auth
