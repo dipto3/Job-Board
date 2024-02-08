@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//Admin routes...
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+//Admin auth
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
 Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('login');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
+//Jobs
+Route::get('/job-create', [JobController::class, 'create'])->name('job.create');
+Route::get('/job-index', [JobController::class, 'index'])->name('job.index');
