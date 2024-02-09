@@ -48,6 +48,16 @@
                                                 <input class="form-control" type="email" name="email"
                                                     id="emailaddress" required="" placeholder="john@deo.com">
                                             </div>
+                                            <div class="col-12">
+                                                <label for="emailaddress">Compnay Contract Number</label>
+                                                <input class="form-control" type="number" name="contract_number"
+                                                    id="contract_number" required="" placeholder="+880">
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="emailaddress">Website/LinkDin page </label>
+                                                <input class="form-control" type="name" name="webpage"
+                                                    id="webpage" required="" placeholder="www.johndeo.com">
+                                            </div>
                                         </div>
 
                                         <div class="form-group row">

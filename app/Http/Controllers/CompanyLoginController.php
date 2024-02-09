@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class CompanyLoginController extends Controller
 {
     public function loginpage()
@@ -13,12 +14,12 @@ class CompanyLoginController extends Controller
     }
     public function loginpost(Request $request)
     {
-        $credentials = $request->validate([
+         $credetials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt( $credetials)) {
             return redirect('admin/dashboard')->with('success', 'Login Success');
         }
 
