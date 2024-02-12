@@ -29,4 +29,6 @@ Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
 //Jobs
 Route::get('/job-create', [JobController::class, 'create'])->name('job.create');
+Route::post('/job-store', [JobController::class, 'store'])->name('job.store');
 Route::get('/job-index', [JobController::class, 'index'])->name('job.index');
+Route::delete('/job-destroy/{id}', [JobController::class, 'destroy'])->name('job.destroy');

@@ -1,4 +1,5 @@
 <!-- C3 Chart css -->
+<link href="{{ asset('admin/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" />
 <link href="{{ asset('admin/assets/libs/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
 
 <!-- App css -->

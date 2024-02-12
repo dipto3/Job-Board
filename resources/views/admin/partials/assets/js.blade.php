@@ -1,3 +1,5 @@
+
+@stack('js')
 <script src="{{ asset('admin/assets/js/vendor.min.js') }}"></script>
 
 <!--C3 Chart-->
@@ -10,3 +12,4 @@
 
 <!-- App js -->
 <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
