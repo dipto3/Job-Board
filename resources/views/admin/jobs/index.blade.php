@@ -17,7 +17,7 @@
                                     <li class="breadcrumb-item active">Datatable</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Datatable</h4>
+                            <h4 class="page-title">Job List</h4>
                         </div>
                     </div>
                 </div>
@@ -29,10 +29,8 @@
                         <div class="card-box table-responsive">
                             <a href="{{ route('job.create') }}" style="float: right;color:white;" type="button"
                                 class="btn btn-info waves-effect waves-light">Add New<i class="mdi mdi-plus"></i></a>
-                            <h4 class="header-title">Default Example</h4>
-                            <p class="sub-header">
-                                DataTables has most
-                            </p>
+                            
+                            
 
                             <table id="datatable" class="table table-bordered  dt-responsive nowrap"
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
