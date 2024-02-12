@@ -50,6 +50,14 @@ class JobController extends Controller
         return view(self::moduleDirectory . 'details', $data);
     }
 
+    public function edit($id)
+    {
+        $data = [
+            'job' => $this->jobService->findJobInfo($id)
+        ];
+        return view(self::moduleDirectory . 'edit', $data);
+    }
+
     public function status(Request $request)
     {
 
