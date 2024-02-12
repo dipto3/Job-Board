@@ -60,23 +60,19 @@ class JobController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->jobService->updateJob($request, $id);
-        toastr()->addSuccess('', 'Job updated Successfully');
-
+        $job = $this->jobService->updateJob($request, $id);
+        if ($job) {
+            toastr()->addInfo('', 'Job Updated Successfully.');
+        } else {
+            toastr()->addError('', 'Something went wrong!');
+        }
         return redirect()->route('job.index');
     }
 
     public function status(Request $request)
     {
-
-        Job::where('id', $request->id)->update([
-            'status' => $request->status,
-        ]);
-
-        return response()->json([
-            'code' => '200',
-            'message' => 'status changed successfully',
-        ]);
+        $this->jobService->status($request);
+        return redirect()->back();
     }
     public function destroy($id)
     {

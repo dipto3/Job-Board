@@ -63,6 +63,13 @@ class JobService
     }
 
 
+    public function status($request)
+    {
+        $job =Job::where('id', $request->id)->update([
+            'status' => $request->status,
+        ]);
+        return $job;
+    }
 
     public function destroyJobInfo($id)
     {
