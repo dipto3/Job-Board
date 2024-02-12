@@ -17,14 +17,14 @@ class JobService
             'tags' => $tags,
             'location' => $request->location,
             'published' => $request->published,
-            'deadline'=> $request->deadline,
-            'salary'=> $request->salary,
-            'employment_type'=> $request->employment_type,
-            'experience'=> $request->experience,
-            'gender'=> $request->gender,
-            'description'=> $request->description,
-            'status'=> $request->status,
-            'link'=> $request->link
+            'deadline' => $request->deadline,
+            'salary' => $request->salary,
+            'employment_type' => $request->employment_type,
+            'experience' => $request->experience,
+            'gender' => $request->gender,
+            'description' => $request->description,
+            'status' => $request->status,
+            'link' => $request->link
         ]);
     }
 
@@ -39,15 +39,30 @@ class JobService
     }
 
 
-    // public function updateMethod($request, $method)
-    // {
-    //     return $method->update([
-    //         'name' => $request->name,
-    //         'status' => $request->status
-    //     ]);
-    // }
+    public function updateJob($request, $id)
+    {
+        $loggedInUser = Auth::user();
+        $tags = implode(',', $request->tags);
+        $data = [
+            'title' => $request->title,
+            'user_id' => $loggedInUser->id,
+            'tags' => $tags,
+            'location' => $request->location,
+            'published' => $request->published,
+            'deadline' => $request->deadline,
+            'salary' => $request->salary,
+            'employment_type' => $request->employment_type,
+            'experience' => $request->experience,
+            'gender' => $request->gender,
+            'description' => $request->description,
+            'status' => $request->status,
+            'link' => $request->link
+        ];
+        $job = Job::where('id', $id)->update($data);
+        return $job;
+    }
 
-    
+
 
     public function destroyJobInfo($id)
     {

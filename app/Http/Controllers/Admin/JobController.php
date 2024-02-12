@@ -58,6 +58,14 @@ class JobController extends Controller
         return view(self::moduleDirectory . 'edit', $data);
     }
 
+    public function update(Request $request, $id)
+    {
+        $this->jobService->updateJob($request, $id);
+        toastr()->addSuccess('', 'Job updated Successfully');
+
+        return redirect()->route('job.index');
+    }
+
     public function status(Request $request)
     {
 

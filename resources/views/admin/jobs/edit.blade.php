@@ -30,7 +30,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div>
-                                        <form class="form-horizontal" action="{{ route('job.store') }}" method="post">
+                                        <form class="form-horizontal" action="{{ route('job.update', $job->id) }}"
+                                            method="post">
+                                            @method('put')
                                             @csrf
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Title</label>
@@ -105,17 +107,18 @@
                                                 <label class="col-md-2 col-form-label" for="example-date">Published
                                                     on</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" id="example-date" type="date"
-                                                        name="published" value="{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}">
+                                                    <input class="form-control" id="example-date" name="published"
+                                                        type="date"
+                                                        value="{{ \Carbon\Carbon::parse($job->published)->format('Y-m-d') }}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label" for="example-date">Deadline</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" type="date" id="example-date" name="deadline"
-                                                        value="{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}"
-                                                        >
+                                                    <input class="form-control" type="date" id="example-date"
+                                                        name="deadline"
+                                                        value="{{ \Carbon\Carbon::parse($job->deadline)->format('Y-m-d') }}">
                                                 </div>
                                             </div>
 
