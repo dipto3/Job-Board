@@ -11,6 +11,7 @@ class JobService
     {
         $loggedInUser = Auth::user();
         $tags = implode(',', $request->tags);
+
         return Job::create([
             'title' => $request->title,
             'user_id' => $loggedInUser->id,
@@ -24,7 +25,7 @@ class JobService
             'gender' => $request->gender,
             'description' => $request->description,
             'status' => $request->status,
-            'link' => $request->link
+            'link' => $request->link,
         ]);
     }
 
@@ -37,7 +38,6 @@ class JobService
     {
         return Job::findOrFail($id);
     }
-
 
     public function updateJob($request, $id)
     {
@@ -56,18 +56,19 @@ class JobService
             'gender' => $request->gender,
             'description' => $request->description,
             'status' => $request->status,
-            'link' => $request->link
+            'link' => $request->link,
         ];
         $job = Job::where('id', $id)->update($data);
+
         return $job;
     }
 
-
     public function status($request)
     {
-        $job =Job::where('id', $request->id)->update([
+        $job = Job::where('id', $request->id)->update([
             'status' => $request->status,
         ]);
+
         return $job;
     }
 

@@ -15,6 +15,7 @@ class AdminAuthController extends Controller
     {
         $this->adminAuthService = $adminAuthService;
     }
+
     public function loginPage()
     {
         return view('admin.admin-auth.login');
@@ -25,8 +26,9 @@ class AdminAuthController extends Controller
         $login = $this->adminAuthService->adminLogin($request);
         if ($login) {
             return redirect()->route('dashboard');
-            
+
         }
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
@@ -37,6 +39,7 @@ class AdminAuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect()->route('login.page');
     }
 }
