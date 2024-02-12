@@ -30,7 +30,13 @@ class JobService
 
     public function getAllJob()
     {
-        return Job::all();
+        
+        if (Auth::user()->role === 'Admin') {
+            return Job::all();
+        } else {
+            $loggedInUser = Auth::user();
+            return Job::where('user_id', $loggedInUser->id)->get();
+        }
     }
 
     public function findJobInfo($id)
