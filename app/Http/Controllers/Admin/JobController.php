@@ -41,13 +41,20 @@ class JobController extends Controller
         return redirect()->route('job.index');
     }
 
+    public function details($id)
+    {
+        $data = [
+            'job' => $this->jobService->findJobInfo($id)
+        ];
+        return view(self::moduleDirectory . 'details', $data);
+    }
+
     public function destroy($id)
     {
         $job =  $this->jobService->destroyJobInfo($id);
         if ($job) {
             toastr()->addInfo('', 'Job Removed Successfully.');
             return redirect()->route('job.index');
-            
         }
     }
 }

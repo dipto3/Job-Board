@@ -10,10 +10,11 @@ class JobService
     public function storeJob($request)
     {
         $loggedInUser = Auth::user();
+        $tags = implode(',', $request->tags);
         return Job::create([
             'title' => $request->title,
             'user_id' => $loggedInUser->id,
-            'tags' => $request->tags,
+            'tags' => $tags,
             'location' => $request->location,
             'published' => $request->published,
             'deadline'=> $request->deadline,
@@ -31,6 +32,12 @@ class JobService
     {
         return Job::all();
     }
+
+    public function findJobInfo($id)
+    {
+        return Job::findOrFail($id);
+    }
+
 
     // public function updateMethod($request, $method)
     // {

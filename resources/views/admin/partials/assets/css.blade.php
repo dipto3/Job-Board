@@ -1,7 +1,8 @@
 <!-- C3 Chart css -->
 <link href="{{ asset('admin/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" />
 <link href="{{ asset('admin/assets/libs/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
-
+ <!-- Summernote css -->
+ <link href="{{ asset('admin/assets/libs/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 <!-- App css -->
 <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"
     id="bootstrap-stylesheet" />

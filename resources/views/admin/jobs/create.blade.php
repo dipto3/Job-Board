@@ -44,7 +44,7 @@
                                                 <label class="col-md-2 col-form-label"
                                                     for="example-placeholder">Tags</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" data-role="tagsinput" name="tags"
+                                                    <input type="text" data-role="tagsinput" name="tags[]"
                                                         id="example-placeholder" class="form-control"
                                                         placeholder="Job tags">
                                                 </div>
@@ -141,8 +141,8 @@
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label"
                                                     for="example-textarea">Description</label>
-                                                <div class="col-md-10">
-                                                    <textarea class="form-control" name="description" rows="5" id="example-textarea"></textarea>
+                                                <div class="col-md-10  ">
+                                                    <textarea class="form-control summernote" name="description" rows="5" id="example-textarea"></textarea>
                                                 </div>
                                             </div>
                                             <button style="float: right;color:white;" type="submit"
@@ -160,11 +160,9 @@
                 </div>
                 <!-- end row -->
 
-
             </div> <!-- end container-fluid -->
 
         </div> <!-- end content -->
-
 
     </div>
 @endsection
