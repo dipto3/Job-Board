@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\JobService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -19,6 +20,7 @@ class JobController extends Controller
 
     public function index()
     {
+        // dd(Auth::user()->id);
         $data = [
             'jobs' => $this->jobService->getAllJob(),
         ];
