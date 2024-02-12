@@ -54,14 +54,21 @@
                                             <td>System Architect</td>
                                             <td>System Architect</td>
                                             <td>System Architect</td>
-                                            <td>1</td>
+                                            <td>
+                                                <label class="switch">
+                                                    <input class="switch_change" name="status" id="{{ $job->id }}"
+                                                        value="{{ $job->status }}" data-onstyle="info" type="checkbox"
+                                                        @php if ($job->status == 1) echo "checked"; @endphp>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="button-list col-md-3">
                                                         <a href="{{ route('job.details', $job->id) }}"
                                                             class="btn btn-icon waves-effect btn-secondary btn-sm"><i
                                                                 style="font-size: 14px;" class="far fa-eye"></i> </a>
-                                                        
+
 
                                                     </div>
                                                     <div class="button-list col-md-3 ml-1">
@@ -144,6 +151,33 @@
                         form.submit();
                     }
                 });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#example").DataTable()
+        });
+        $('.switch_change').on('change', function(e) {
+            e.preventDefault();
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).attr('id');
+
+            $.ajax({
+
+                url: '{{ route('job.status') }}',
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    status: status,
+                    id: id
+                },
+
+                success: function(data) {
+
+                    toastr.success(data.message);
+                }
             });
         });
     </script>

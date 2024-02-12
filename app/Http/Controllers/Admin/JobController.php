@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Services\JobService;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,18 @@ class JobController extends Controller
         return view(self::moduleDirectory . 'details', $data);
     }
 
+    public function status(Request $request)
+    {
+
+        Job::where('id', $request->id)->update([
+            'status' => $request->status,
+        ]);
+
+        return response()->json([
+            'code' => '200',
+            'message' => 'status changed successfully',
+        ]);
+    }
     public function destroy($id)
     {
         $job =  $this->jobService->destroyJobInfo($id);
