@@ -15,7 +15,12 @@
                                     <li class="breadcrumb-item active">Dashboard 1</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Dashboard</h4>
+                            @if (Auth::user()->role == 'Admin')
+                                <h4 class="page-title">Admin Dashboard</h4>
+                            @elseif (Auth::user()->role == 'Company')
+                                <h4 class="page-title">{{ Auth::user()->name }}'s Dashboard</h4>
+                            @endif
+
                         </div>
                     </div>
                 </div>
