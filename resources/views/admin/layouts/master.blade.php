@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     @include('admin.partials.assets.css')
 </head>
-
 <body>
     <!-- Begin page -->
     <div id="wrapper">
@@ -25,7 +24,6 @@
         <!-- Start Page Content here -->
         @yield('admin.content')
         <!-- End Page content -->
-
     </div>
     <!-- END wrapper -->
     <!-- Vendor js -->

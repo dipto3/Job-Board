@@ -27,10 +27,8 @@ class CompanyAuthController extends Controller
         ]);
 
         $com = DB::table('company_infos')->insert([
-        'name'     => $request->name,
-        'email'     => $request->email,
-        'password' => $request->password,
-        'contract_number '=> $request->contract_number,
+        'user_id' => $user,
+        'contract_number'=> $request->contract_number,
         'webpage'     => $request->webpage,
         ]);
 

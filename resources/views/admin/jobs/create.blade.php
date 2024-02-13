@@ -12,9 +12,10 @@
                         <div class="page-title-box">
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Icons</a></li>
-                                    <li class="breadcrumb-item active">Basic Inputs</li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Job</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Jobs</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Create</a></li>
                                 </ol>
                             </div>
                             <h4 class="page-title">Create Job</h4>
@@ -23,143 +24,132 @@
                 </div>
                 <!-- end page title -->
 
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
 
-
                             <div class="row">
                                 <div class="col-12">
                                     <div>
-                                        <form class="form-horizontal">
+                                        <form class="form-horizontal" action="{{ route('job.store') }}" method="post">
+                                            @csrf
                                             <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="simpleinput">Text</label>
+                                                <label class="col-md-2 col-form-label" for="simpleinput">Title</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" id="simpleinput" class="form-control"
-                                                        value="Some text value...">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-email">Email</label>
-                                                <div class="col-md-10">
-                                                    <input type="email" id="example-email" name="example-email"
-                                                        class="form-control" placeholder="Email">
+                                                    <input type="text" name="title" id="simpleinput"
+                                                        class="form-control" placeholder="Job title">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label"
-                                                    for="example-placeholder">Placeholder</label>
+                                                    for="example-placeholder">Tags</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" id="example-placeholder" class="form-control"
-                                                        placeholder="placeholder">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-textarea">Text
-                                                    area</label>
-                                                <div class="col-md-10">
-                                                    <textarea class="form-control" rows="5" id="example-textarea"></textarea>
+                                                    <input type="text" data-role="tagsinput" name="tags[]"
+                                                        id="example-placeholder" class="form-control"
+                                                        placeholder="Job tags">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-helping">Helping
-                                                    text</label>
+                                                <label class="col-md-2 col-form-label"
+                                                    for="example-placeholder">Location</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" id="example-helping" class="form-control"
-                                                        placeholder="Helping text">
-                                                    <span class="help-block"><small>A block of help text that breaks onto a
-                                                            new line and may extend beyond one line.</small></span>
+                                                    <input type="text" name="location" id="example-placeholder"
+                                                        class="form-control" placeholder="Location">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Input Select</label>
-                                                <div class="col-md-10">
-                                                    <select class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select>
-                                                    {{-- <h6>Multiple select</h6>
-                                                    <select multiple class="form-control">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
-                                                    </select> --}}
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-fileinput">Default file
-                                                    input</label>
-                                                <div class="col-md-10">
-                                                    <input type="file" id="example-fileinput" class="form-control">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-date">Date</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-date" type="date"
-                                                        name="date">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-month">Month</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-month" type="month"
-                                                        name="month">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-time">Time</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-time" type="time"
-                                                        name="time">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-number">Number</label>
+                                                <label class="col-md-2 col-form-label" for="example-number">salary</label>
                                                 <div class="col-md-10">
                                                     <input class="form-control" id="example-number" type="number"
-                                                        name="number">
+                                                        name="salary" placeholder="10000-20000 BDT.">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label"
+                                                    for="example-number">Experience</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" id="example-number" type="number"
+                                                        name="experience" placeholder="1-2 years">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">URL</label>
+                                                <label class="col-md-2 col-form-label">Employment Type</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" type="url" name="url">
+                                                    <select class="form-control" name="employment_type">
+                                                        <option>Select</option>
+                                                        <option value="fulltime">Full-Time</option>
+                                                        <option value="parttime">Part-Time</option>
+                                                        <option value="freelance">Freelance</option>
+                                                    </select>
+
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Search</label>
+                                                <label class="col-md-2 col-form-label">Gender</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" type="search" name="search">
+                                                    <select class="form-control" name="gender">
+                                                        <option>Select</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                        <option value="any">Any</option>
+                                                    </select>
+
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Tel</label>
+                                                <label class="col-md-2 col-form-label" for="example-date">Published
+                                                    on</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" type="tel" name="tel">
+                                                    <input class="form-control" id="example-date" type="date"
+                                                        name="published">
                                                 </div>
                                             </div>
 
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label" for="example-date">Deadline</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" id="example-date" type="date"
+                                                        name="deadline">
+                                                </div>
+                                            </div>
 
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">Application Link</label>
+                                                <div class="col-md-10">
+                                                    <input placeholder="URL" class="form-control" type="url"
+                                                        name="link">
+                                                </div>
+                                            </div>
 
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">Status</label>
+                                                <div class="col-md-10">
+                                                    <select class="form-control" name="status">
+                                                        <option value="1">Active</option>
+                                                        <option value="0">Inactive</option>
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label"
+                                                    for="example-textarea">Description</label>
+                                                <div class="col-md-10  ">
+                                                    <textarea class="form-control summernote" name="description" rows="5" id="example-textarea"></textarea>
+                                                </div>
+                                            </div>
+                                            <button style="float: right;color:white;" type="submit"
+                                                class="btn btn-success waves-effect waves-light">Submit</button>
                                         </form>
+
                                     </div>
                                 </div>
 
@@ -171,11 +161,9 @@
                 </div>
                 <!-- end row -->
 
-
             </div> <!-- end container-fluid -->
 
         </div> <!-- end content -->
-
 
     </div>
 @endsection

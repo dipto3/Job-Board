@@ -43,4 +43,10 @@ Route::post('/company/login',[CompanyLoginController::class,'loginpost'])->name(
 
 //Jobs
 Route::get('/job-create', [JobController::class, 'create'])->name('job.create');
+Route::post('/job-store', [JobController::class, 'store'])->name('job.store');
 Route::get('/job-index', [JobController::class, 'index'])->name('job.index');
+Route::get('/job-details/{id}', [JobController::class, 'details'])->name('job.details');
+Route::get('/job-edit/{id}', [JobController::class, 'edit'])->name('job.edit');
+Route::put('/job-update/{id}', [JobController::class, 'update'])->name('job.update');
+Route::delete('/job-destroy/{id}', [JobController::class, 'destroy'])->name('job.destroy');
+Route::post('/job-status', [JobController::class, 'status'])->name('job.status');
