@@ -14,15 +14,29 @@ class CompanyLoginController extends Controller
     {
         return view('company.auth.login');
     }
+
+    public function notApprove()
+    {
+        return view('company.not-approved');
+    }
     public function loginpost(Request $request)
     {
-         $credetials = $request->validate([
+        $credetials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt( $credetials)) {
-            return redirect('admin/dashboard')->with('success', 'Login Success');
+        if (Auth::attempt($credetials)) {
+            $user = Auth::user();
+            // dd($user->companyInfo->approval);
+
+            //if account is not approved
+            if ($user->companyInfo->approval === 'pending') {
+                return redirect()->route('company.pending');
+            } else {
+                 //if account is approved
+                return redirect()->route('dashboard')->with('success', 'Login Success');
+            }
         }
 
         return back()->with('error', 'Error Email or Password');

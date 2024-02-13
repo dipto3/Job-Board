@@ -36,9 +36,10 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logo
 
 //Company auth
 Route::get('/company/register', [CompanyAuthController::class, 'registerPage'])->name('company.register.page');
-Route::post('/company/register',[CompanyAuthController::class,'registerpost'])->name('company.register');
-Route::get('/company/login-page',[CompanyLoginController::class,'loginpage'])->name('company.login.page');
-Route::post('/company/login',[CompanyLoginController::class,'loginpost'])->name('company.login');
+Route::post('/company/register', [CompanyAuthController::class, 'registerpost'])->name('company.register');
+Route::get('/company/login-page', [CompanyLoginController::class, 'loginpage'])->name('company.login.page');
+Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name('company.pending');
+Route::post('/company/login', [CompanyLoginController::class, 'loginpost'])->name('company.login');
 
 
 //Jobs

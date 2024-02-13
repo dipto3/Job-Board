@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CompanyAuthController extends Controller
 {
@@ -18,29 +19,20 @@ class CompanyAuthController extends Controller
 
     public function registerpost(Request $request)
     {
-
-
-        $user = DB::table('users')->insert([
-        'name'     => $request->name,
-        'email'     => $request->email,
-        'password' => $request->password,
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
-        $com = DB::table('company_infos')->insert([
-        'user_id' => $user,
-        'contract_number'=> $request->contract_number,
-        'webpage'     => $request->webpage,
+        CompanyInfo::create([
+            'user_id' => $user->id,
+            'contract_number'  => $request->contract_number,
+            'webpage' => $request->webpage,
+            'approval' => 'pending',
         ]);
 
-        if($user && $com)
-        {
-            return back()->with('success', 'Register successfully');
-        }
-        else
-        {
-            return back()->with('fail', 'Worng');
-        }
-
+        return redirect()->back();
+        
     }
-
 }

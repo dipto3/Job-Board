@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="account-content mt-4">
-                                    <form class="form-horizontal" action="{{ url('login') }}" method="post">
+                                    <form class="form-horizontal" action="{{ route('company.login') }}" method="post">
                                         @csrf
 
                                         <div class="form-group row">

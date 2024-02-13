@@ -13,6 +13,7 @@ class CompanyInfo extends Model
         'user_id',
         'package',
         'contract_number',
-        'webpage'
+        'webpage',
+        'approval'
     ];
 }

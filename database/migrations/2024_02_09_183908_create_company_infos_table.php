@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('package')->nullable();
             $table->string('contract_number');
             $table->string('webpage');
-
+            $table->string('approval')->nullable();
             $table->timestamps();
         });
     }
