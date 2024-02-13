@@ -25,7 +25,7 @@ class AdminAuthController extends Controller
         $login = $this->adminAuthService->adminLogin($request);
         if ($login) {
             return redirect()->route('dashboard');
-            
+
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
