@@ -41,6 +41,8 @@ Route::get('/company/login-page', [CompanyLoginController::class, 'loginpage'])-
 Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name('company.pending');
 Route::post('/company/login', [CompanyLoginController::class, 'loginpost'])->name('company.login');
 
+Route::get('/company/accept_account/{id}', [DashboardController::class, 'accept_account'])->name('account.accept');
+Route::get('/company/reject_account/{id}', [DashboardController::class, 'reject_account'])->name('account.reject');
 
 //Jobs
 Route::get('/job-create', [JobController::class, 'create'])->name('job.create');

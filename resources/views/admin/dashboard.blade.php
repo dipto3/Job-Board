@@ -28,78 +28,34 @@
 
                 <div class="row">
 
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card-box widget-box-two widget-two-custom">
-                            <div class="media">
-                                <div class="avatar-lg rounded-circle bg-primary widget-two-icon align-self-center">
-                                    <i class="mdi mdi-currency-usd avatar-title font-30 text-white"></i>
-                                </div>
+                    <table class="table table-dark table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="align-middle">ID</th>
+                                <th class="align-middle">Name</th>
+                                <th class="align-middle">Email</th>
+                                <th class="align-middle">Account Status</th>
+                                <th class="align-middle">Approve Account </th>
+                                <th class="align-middle">Remove Account </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
 
-                                <div class="wigdet-two-content media-body">
-                                    <p class="m-0 text-uppercase font-weight-medium text-truncate" title="Statistics">Total
-                                        Revenue</p>
-                                    <h3 class="font-weight-medium my-2">$ <span data-plugin="counterup">65,841</span></h3>
-                                    <p class="m-0">Jan - Apr 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col -->
+                                    <tr>
+                                        <td class="align-middle">{{ $user->id }}</td>
+                                        <td class="align-middle">{{ $user->name }}</td>
+                                        <td class="align-middle">{{ $user->email }}</td>
+                                        <td class="align-middle">{{ optional($user->companyInfo)->approval }}</td>
+                                        <td><a href="{{ 'account.accept',optional($user->companyInfo)->id }}" class="btn btn-outline-secondary">Approve</a>
+                                        </td>
+                                        <td><a href="{{'account.reject',optional($user->companyInfo)->id}}" class="btn btn-primary">Reject</a>
+                                        </td>
+                                    </tr>
 
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card-box widget-box-two widget-two-custom ">
-                            <div class="media">
-                                <div class="avatar-lg rounded-circle bg-primary widget-two-icon align-self-center">
-                                    <i class="mdi mdi-account-multiple avatar-title font-30 text-white"></i>
-                                </div>
-
-                                <div class="wigdet-two-content media-body">
-                                    <p class="m-0 text-uppercase font-weight-medium text-truncate" title="Statistics">Total
-                                        Unique Visitors</p>
-                                    <h3 class="font-weight-medium my-2"> <span data-plugin="counterup">26,521</span></h3>
-                                    <p class="m-0">Jan - Apr 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col -->
-
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card-box widget-box-two widget-two-custom ">
-                            <div class="media">
-                                <div class="avatar-lg rounded-circle bg-primary widget-two-icon align-self-center">
-                                    <i class="mdi mdi-crown avatar-title font-30 text-white"></i>
-                                </div>
-
-                                <div class="wigdet-two-content media-body">
-                                    <p class="m-0 text-uppercase font-weight-medium text-truncate" title="Statistics">Number
-                                        of Transactions</p>
-                                    <h3 class="font-weight-medium my-2"><span data-plugin="counterup">7,842</span>
-                                    </h3>
-                                    <p class="m-0">Jan - Apr 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col -->
-
-                    <div class="col-xl-3 col-sm-6">
-                        <div class="card-box widget-box-two widget-two-custom ">
-                            <div class="media">
-                                <div class="avatar-lg rounded-circle bg-primary widget-two-icon align-self-center">
-                                    <i class="mdi mdi-auto-fix  avatar-title font-30 text-white"></i>
-                                </div>
-
-                                <div class="wigdet-two-content media-body">
-                                    <p class="m-0 text-uppercase font-weight-medium text-truncate" title="Statistics">
-                                        Conversation Rate</p>
-                                    <h3 class="font-weight-medium my-2"><span data-plugin="counterup">2.07</span>%
-                                    </h3>
-                                    <p class="m-0">Jan - Apr 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
 
                 </div>
                 <!-- end row -->
