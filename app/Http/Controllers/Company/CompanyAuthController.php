@@ -30,6 +30,7 @@ class CompanyAuthController extends Controller
             'contract_number'  => $request->contract_number,
             'webpage' => $request->webpage,
             'approval' => 'pending',
+            'role' => 'Company',
         ]);
 
         return redirect()->back();
