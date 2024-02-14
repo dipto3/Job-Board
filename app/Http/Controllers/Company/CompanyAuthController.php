@@ -23,6 +23,7 @@ class CompanyAuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'Company',
         ]);
 
         CompanyInfo::create([
@@ -30,7 +31,7 @@ class CompanyAuthController extends Controller
             'contract_number'  => $request->contract_number,
             'webpage' => $request->webpage,
             'approval' => 'pending',
-            'role' => 'Company',
+            
         ]);
 
         return redirect()->back();
