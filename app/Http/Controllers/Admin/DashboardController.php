@@ -5,30 +5,28 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyInfo;
 use App\Models\User;
+use Illuminate\Support\Facades\Crypt;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $users = User::where('role','company');
+        $users = User::where('role','Company')->get();
         return view('admin.dashboard', compact('users'));
     }
-    public function accept_account($id)
+    public function accept_account($encryptedUserId)
     {
-        $user = CompanyInfo::find($id);
-        $user->approval='active';
-        $user->save();
 
-        return redirect()->back();
+        $userId = Crypt::decrypt($encryptedUserId);
+        $user = CompanyInfo::findOrFail($userId);
+
+        $user->update(['approval' => $user->approval == 'pending' ? 'approved' : 'pending']);
+
+
+
+
+        return back();
 
     }
-    public function reject_account($id)
-    {
-        $userpost = CompanyInfo::find($id);
-        $userpost->approval='rejected';
-        $userpost->save();
 
-        return redirect()->back();
-
-    }
 }

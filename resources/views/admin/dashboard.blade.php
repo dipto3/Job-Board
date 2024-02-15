@@ -36,23 +36,27 @@
                                 <th class="align-middle">Email</th>
                                 <th class="align-middle">Account Status</th>
                                 <th class="align-middle">Approve Account </th>
-                                <th class="align-middle">Remove Account </th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
-
-                                    <tr>
-                                        <td class="align-middle">{{ $user->id }}</td>
-                                        <td class="align-middle">{{ $user->name }}</td>
-                                        <td class="align-middle">{{ $user->email }}</td>
-                                        <td class="align-middle">{{ optional($user->companyInfo)->approval }}</td>
-                                        <td><a href="{{ 'account.accept',optional($user->companyInfo)->id }}" class="btn btn-outline-secondary">Approve</a>
-                                        </td>
-                                        <td><a href="{{'account.reject',optional($user->companyInfo)->id}}" class="btn btn-primary">Reject</a>
-                                        </td>
-                                    </tr>
-
+                                <tr>
+                                    <td class="align-middle">{{ $user->id }}</td>
+                                    <td class="align-middle">{{ $user->name }}</td>
+                                    <td class="align-middle">{{ $user->email }}</td>
+                                    <td class="align-middle">{{($user->companyInfo)->approval }}</td>
+                                    <td>
+                                        <form style="margin:0; padding:0; decoration:none; background:none" method="post"
+                                            action="{{route('update.active.account', ['encryptedUserId' => encrypt(($user->companyInfo)->id)])}}">
+                                            @csrf
+                                            <button type="submit" style=""
+                                                class="btn btn-{{ ($user->companyInfo)->approval == 'pending' ? 'danger' : 'primary' }}">
+                                                {{ ($user->companyInfo)->approval == 'pending' ? 'Approve' : 'Approved' }}
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
