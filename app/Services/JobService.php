@@ -33,11 +33,11 @@ class JobService
     {
         //If role admin then show all jobs
         if (Auth::user()->role === 'Admin') {
-            return Job::all();
+            return Job::orderBy('id','DESC')->get();
         } else {
             //If role not admin then show loggedInUser jobs
             $loggedInUser = Auth::user();
-            return Job::where('user_id', $loggedInUser->id)->get();
+            return Job::where('user_id', $loggedInUser->id)->orderBy('id','DESC')->get();
         }
     }
 

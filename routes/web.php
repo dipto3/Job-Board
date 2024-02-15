@@ -8,7 +8,6 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +29,6 @@ Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name(
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
 Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('login');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
-
-
 //Company routes...
 
 //Company auth
@@ -40,7 +37,6 @@ Route::post('/company/register', [CompanyAuthController::class, 'registerpost'])
 Route::get('/company/login-page', [CompanyLoginController::class, 'loginpage'])->name('company.login.page');
 Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name('company.pending');
 Route::post('/company/login', [CompanyLoginController::class, 'loginpost'])->name('company.login');
-
 
 //Jobs
 Route::get('/job-create', [JobController::class, 'create'])->name('job.create');

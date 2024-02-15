@@ -24,4 +24,9 @@ class Job extends Model
         'description',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

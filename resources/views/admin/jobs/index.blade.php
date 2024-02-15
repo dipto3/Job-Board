@@ -55,12 +55,17 @@
                                             <td>System Architect</td>
                                             <td>System Architect</td>
                                             <td>
-                                                <label class="switch">
-                                                    <input class="switch_change" name="status" id="{{ $job->id }}"
-                                                        value="{{ $job->status }}" data-onstyle="info" type="checkbox"
-                                                        @php if ($job->status == 1) echo "checked"; @endphp>
-                                                    <span class="slider round"></span>
-                                                </label>
+                                                
+                                                @if(now()->startOfDay() > $job->deadline)
+                                                    <button disabled="disabled" class="btn btn-danger btn-sm">Expired</button>
+                                                    @else
+                                                    <label class="switch">
+                                                        <input class="switch_change" name="status" id="{{ $job->id }}"
+                                                            value="{{ $job->status }}" data-onstyle="info" type="checkbox"
+                                                            @php if ($job->status == 1) echo "checked"; @endphp>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                @endif
                                             </td>
                                             <td>
                                                 <div class="row">
