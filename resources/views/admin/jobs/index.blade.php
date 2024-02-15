@@ -51,14 +51,15 @@
                                     @foreach ($jobs as $job)
                                         <tr>
                                             <td>{{ $job->title }}</td>
-                                            <td>System Architect</td>
-                                            <td>System Architect</td>
-                                            <td>System Architect</td>
+                                            <td>{{ $job->user->name }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($job->deadline)->format('d F, Y (l)') }}</td>
                                             <td>
-                                                
-                                                @if(now()->startOfDay() > $job->deadline)
-                                                    <button disabled="disabled" class="btn btn-danger btn-sm">Expired</button>
-                                                    @else
+
+                                                @if (now()->startOfDay() > $job->deadline)
+                                                    <button disabled="disabled"
+                                                        class="btn btn-danger btn-sm">Expired</button>
+                                                @else
                                                     <label class="switch">
                                                         <input class="switch_change" name="status" id="{{ $job->id }}"
                                                             value="{{ $job->status }}" data-onstyle="info" type="checkbox"
@@ -78,9 +79,10 @@
                                                     </div>
                                                     <div class="button-list col-md-3 ml-1">
                                                         <a href="{{ route('job.edit', $job->id) }}">
-                                                        <button type="button"
-                                                            class="btn btn-icon waves-effect btn-secondary btn-sm"><i
-                                                                style="font-size: 14px;" class="fas fa-edit"></i> </button></a>
+                                                            <button type="button"
+                                                                class="btn btn-icon waves-effect btn-secondary btn-sm"><i
+                                                                    style="font-size: 14px;" class="fas fa-edit"></i>
+                                                            </button></a>
 
                                                     </div>
                                                     <div class="button-list col-md-2 ml-1">
