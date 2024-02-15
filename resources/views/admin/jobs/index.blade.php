@@ -55,7 +55,6 @@
                                             <td>{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($job->deadline)->format('d F, Y (l)') }}</td>
                                             <td>
-
                                                 @if (now()->startOfDay() > $job->deadline)
                                                     <button disabled="disabled"
                                                         class="btn btn-danger btn-sm">Expired</button>
