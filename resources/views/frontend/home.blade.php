@@ -68,7 +68,7 @@
 
                 @foreach ($activeJobs as $job)
                     <!-- Job List Start -->
-                    <a href="job-single.html" class="job-list row">
+                    <a href="{{ route('job.description', $job->uuid) }}" class="job-list row">
                         <div class="company-logo col-auto">
                             <img src="frontend/assets/images/companies/company-1.png" alt="Company Logo">
                         </div>

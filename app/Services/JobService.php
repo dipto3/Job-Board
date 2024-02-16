@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class JobService
 {
@@ -14,6 +15,7 @@ class JobService
 
         return Job::create([
             'title' => $request->title,
+            'uuid' => Str::uuid()->toString(),
             'user_id' => $loggedInUser->id,
             'tags' => $tags,
             'location' => $request->location,

@@ -7,6 +7,7 @@ use App\Http\Controllers\Company\CompanyLoginController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Frontend\JobController as FrontendJobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ use App\Http\Controllers\Admin\DashboardController;
 //Frontend Routes...
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
+
+Route::get('/job/{uuid}', [FrontendJobController::class, 'jobDetails'])->name('job.description');
 
 //Admin routes...
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
