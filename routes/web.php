@@ -42,7 +42,6 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logo
 Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->name('show.user.company');
 Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::class, 'accept_account'])->name('update.active.account');
 
-
 //Company routes...
 
 //Company auth
