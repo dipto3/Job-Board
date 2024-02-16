@@ -5,9 +5,8 @@
             <div class="page-heading-content text-center">
                 <h3 class="title">{{ $job->title }}</h3>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="job-list.html">Jobs</a></li>
-                    <li class="breadcrumb-item active">Full Stack Backend Developer</li>
+                    <li class="breadcrumb-item active"><a href="{{ route('home') }}">Home</a></li>
+                  
                 </ol>
             </div>
         </div>
@@ -23,7 +22,7 @@
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <a href="company-single.html"><img src="assets/images/companies/company-1.png" alt="Company Logo"></a>
+                                <a href="#"><img src="assets/images/companies/company-1.png" alt="Company Logo"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">{{ $job->salary }} </span>
@@ -69,7 +68,6 @@
                                 <h6 class="title">Job Overview</h6>
                                 <ul class="job-overview list-unstyled">
                                     <li><strong>Published on:</strong> {{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</li>
-                                    
                                     <li><strong>Employment Status:</strong> {{ $job->employment_type }}</li>
                                     <li><strong>Experience:</strong> {{ $job->experience }}</li>
                                     <li><strong>Job Location:</strong> {{ $job->location }}</li>
@@ -79,9 +77,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- Sidebar (Job Overview) End -->
-
-                       
+                        <!-- Sidebar (Job Overview) End --> 
                     </div>
                 </div>
                 <!-- Job Sidebar Wrap End -->

@@ -24,6 +24,18 @@
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-sidebar"></i>
+                        <span> Users </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{ route('show.user.company') }}">Company</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-sidebar"></i>
                         <span> Job </span>
                         <span class="menu-arrow"></span>
                     </a>

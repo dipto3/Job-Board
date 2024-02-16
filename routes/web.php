@@ -7,7 +7,11 @@ use App\Http\Controllers\Company\CompanyLoginController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Frontend\JobController as FrontendJobController;
+
+use App\Http\Controllers\Admin\UserManageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +36,13 @@ Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name(
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
 Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('login');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+
+//Admin manage users
+Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->name('show.user.company');
+Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::class, 'accept_account'])->name('update.active.account');
+
+
 //Company routes...
 
 //Company auth
