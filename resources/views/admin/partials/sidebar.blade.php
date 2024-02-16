@@ -17,7 +17,6 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
 
-
                     </ul>
                 </li>
 
@@ -65,50 +64,6 @@
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="extras-about.html">About Us</a></li>
                     </ul>
-                </li>
-
-                <li class="menu-title">Apps</li>
-
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-mail"></i>
-                        <span> Email </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Read Email</a></li>
-                        <li><a href="email-compose.html">Compose Email</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="calendar.html">
-                        <i class="fe-calendar"></i>
-                        <span> Calendar </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="tickets.html">
-                        <i class="fe-life-buoy"></i>
-                        <span> Tickets </span>
-                        <span class="badge badge-danger badge-pill float-right">New</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="taskboard.html">
-                        <i class="fe-file-text"></i>
-                        <span> Task Board </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="todo.html">
-                        <i class="fe-layers"></i>
-                        <span> Todo </span>
-                    </a>
                 </li>
 
             </ul>
