@@ -29,10 +29,11 @@ class User extends Authenticatable
         return $this->hasOne(CompanyInfo::class);
     }
 
-    // public function jobs()
-    // {
-    //     return $this->hasMany(Job::class);
-    // }
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+   
 
     /**
      * The attributes that should be hidden for serialization.

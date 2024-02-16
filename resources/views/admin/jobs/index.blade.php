@@ -18,17 +18,32 @@
                                 </ol>
                             </div>
                             <h4 class="page-title">Job List</h4>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 <!-- end page title -->
 
                 <div class="row">
+
                     <div class="col-12">
+                        @if (Auth::user()->role === 'Company' && Auth::user()->companyInfo->package->name === 'Free')
+                            <p class="col " style="float: left;color:rgb(201, 15, 15); text-align:center;"> <strong>You
+                                    are
+                                    using Free
+                                    package, <a href="" style="color:rgb(201, 15, 15);"><u>Please
+                                            Buy Premium Package</u></a></strong>
+                            </p>
+                        @endif
 
                         <div class="card-box table-responsive">
-                            <a href="{{ route('job.create') }}" style="float: right;color:white;" type="button"
-                                class="btn btn-info waves-effect waves-light">Add New<i class="mdi mdi-plus"></i></a>
+
+                            <a href="{{ route('job.create') }}" type="button" style="float: right;"
+                                class="col-md-2 btn btn-info  waves-effect waves-light">Add New<i
+                                    class="mdi mdi-plus"></i></a>
 
 
 

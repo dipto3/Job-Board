@@ -46,7 +46,7 @@ Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::
 
 //Company auth
 Route::get('/company/register', [CompanyAuthController::class, 'registerPage'])->name('company.register.page');
-Route::post('/company/register', [CompanyAuthController::class, 'registerpost'])->name('company.register');
+Route::post('/company/register', [CompanyAuthController::class, 'registerPost'])->name('company.register');
 Route::get('/company/login-page', [CompanyLoginController::class, 'loginpage'])->name('company.login.page');
 Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name('company.pending');
 Route::post('/company/login', [CompanyLoginController::class, 'loginpost'])->name('company.login');

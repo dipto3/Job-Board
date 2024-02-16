@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Package extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'limit'
+    ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
 }

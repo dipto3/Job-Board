@@ -17,7 +17,7 @@ class CompanyAuthController extends Controller
         return view('company.auth.register');
     }
 
-    public function registerpost(Request $request)
+    public function registerPost(Request $request)
     {
         $user = User::create([
             'name' => $request->name,
@@ -31,10 +31,10 @@ class CompanyAuthController extends Controller
             'contract_number'  => $request->contract_number,
             'webpage' => $request->webpage,
             'approval' => 'pending',
-            
+            'package_id' => 1,
+
         ]);
 
         return redirect()->back();
-        
     }
 }

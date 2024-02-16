@@ -38,7 +38,7 @@ class JobController extends Controller
         if ($job) {
             toastr()->addInfo('', 'Job Created Successfully.');
         } else {
-            toastr()->addError('', 'Something went wrong!');
+            toastr()->addError('', 'Job posting limit over!');
         }
 
         return redirect()->route('job.index');

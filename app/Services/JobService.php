@@ -12,6 +12,13 @@ class JobService
     public function storeJob($request)
     {
         $loggedInUser = Auth::user();
+
+        $jobLimit = $loggedInUser->companyInfo->package->limit;
+
+        // Check if user's job post limit over
+        if ($loggedInUser->jobs->count() >= $jobLimit) {
+            return false; // Job posting limit over
+        }
         $tags = implode(',', $request->tags);
 
         return Job::create([

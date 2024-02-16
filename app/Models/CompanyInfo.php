@@ -11,9 +11,14 @@ class CompanyInfo extends Model
 
     protected $fillable = [
         'user_id',
-        'package',
+        'package_id',
         'contract_number',
         'webpage',
         'approval'
     ];
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
 }
