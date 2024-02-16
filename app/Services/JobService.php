@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Job;
+use App\Models\JobView;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -35,11 +36,23 @@ class JobService
     {
         //If role admin then show all jobs
         if (Auth::user()->role === 'Admin') {
-            return Job::orderBy('id','DESC')->get();
+            $jobs = Job::orderBy('id', 'DESC')->get();
+            //Specific job's view count
+            foreach ($jobs as $job) {
+                $job->totalViews = JobView::where('job_id', $job->id)->count();
+            }
+
+            return $jobs;
         } else {
             //If role not admin then show loggedInUser jobs
             $loggedInUser = Auth::user();
-            return Job::where('user_id', $loggedInUser->id)->orderBy('id','DESC')->get();
+            $jobs = Job::where('user_id', $loggedInUser->id)->orderBy('id', 'DESC')->get();
+
+            //Specific job's view count
+            foreach ($jobs as $job) {
+                $job->totalViews = JobView::where('job_id', $job->id)->count();
+            }
+            return $jobs;
         }
     }
 
