@@ -41,6 +41,14 @@
                                             </div>
 
                                             <div class="form-group row">
+                                                <label class="col-md-2 col-form-label" for="simpleinput">Category</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" name="category" id="simpleinput"
+                                                        class="form-control" value="{{ $job->category->name }}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
                                                 <label class="col-md-2 col-form-label"
                                                     for="example-placeholder">Tags</label>
                                                 <div class="col-md-10">
@@ -120,8 +128,8 @@
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label">Application Link</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" name="link" value="{{ $job->link }}"
-                                                        readonly>
+                                                    <input class="form-control" name="link"
+                                                        value="{{ $job->link }}" readonly>
                                                 </div>
                                             </div>
 
@@ -137,9 +145,9 @@
                                                 <label class="col-md-2 col-form-label"
                                                     for="example-textarea">Description</label>
                                                 <div class="col-md-10">
-                                                   
-                                                        <p class="form-control">{!! $job->description !!}</p>
-                                                   
+
+                                                    <p class="form-control">{!! $job->description !!}</p>
+
                                                 </div>
                                             </div>
 

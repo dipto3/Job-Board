@@ -7,13 +7,18 @@
                 <div class="footer-widget">
                     <div class="footer-widget-about">
                         <img src="assets/images/logo/logo-light.png" alt="">
-                        <p>Lorem ipsum dolor sit amet consecte tur adipisicing elit. Maiores officiis quod quo id inventore quis.</p>
+                        <p>Lorem ipsum dolor sit amet consecte tur adipisicing elit. Maiores officiis quod quo id
+                            inventore quis.</p>
 
                         <ul class="footer-socail">
-                            <li><a target="_blank" rel="noopener" href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                            <li><a target="_blank" rel="noopener" href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
-                            <li><a target="_blank" rel="noopener" href="https://www.linkedin.com/" class="fa fa-linkedin"></a></li>
-                            <li><a target="_blank" rel="noopener" href="https://www.pinterest.com/" class="fa fa-pinterest-p"></a></li>
+                            <li><a target="_blank" rel="noopener" href="https://www.facebook.com/"
+                                    class="fa fa-facebook"></a></li>
+                            <li><a target="_blank" rel="noopener" href="https://www.twitter.com/"
+                                    class="fa fa-twitter"></a></li>
+                            <li><a target="_blank" rel="noopener" href="https://www.linkedin.com/"
+                                    class="fa fa-linkedin"></a></li>
+                            <li><a target="_blank" rel="noopener" href="https://www.pinterest.com/"
+                                    class="fa fa-pinterest-p"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -57,12 +62,24 @@
             <!-- Footer Widget Start -->
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="footer-widget">
-                    <h6 class="title">Newsletter</h6>
+                    <h6 class="title">Subscribe</h6>
                     <div class="footer-widget-newsletter">
-                        <p>Subscribe to Lawson to get all latest Job, Resume, Company Listing & Blog post to stay update.</p>
+                        <p>Candidates can ‘subscribe’ to the jobs by selecting ‘Categories’ and will get notified via
+                            email when any job is posted on the selected category.</p>
                         <form id="mc-form" class="mc-form">
-                            <input id="mc-email" autocomplete="off" type="email" placeholder="Enter your e-mail address">
-                            <button id="mc-submit" class="btn"><i class="fa fa-envelope-o"></i></button>
+                            <div class="row">
+                                <select class="col form-control" name="category">
+                                    <option>Select</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                    <input style="margin-left: 2px;" class="col" autocomplete="off" type="email"
+                                    placeholder="e-mail">
+                               
+                                <button id="mc-submit" class="btn"><i class="fa fa-envelope-o"></i></button>
+                            </div>
+
                         </form>
                         <!-- mailchimp-alerts Start -->
                         <div class="mailchimp-alerts text-centre">
@@ -87,7 +104,8 @@
 
             <!-- Footer Copyright Start -->
             <div class="col-12">
-                <p class="footer-copyright text-center">© 2022 Keller. Made with <i class="fa fa-heart heart-icon"></i> By <a target="_blank" href="https://hasthemes.com/">HasThemes</a></p>
+                <p class="footer-copyright text-center">© 2022 Keller. Made with <i class="fa fa-heart heart-icon"></i>
+                    By <a target="_blank" href="https://hasthemes.com/">HasThemes</a></p>
             </div>
             <!-- Footer Copyright End -->
 

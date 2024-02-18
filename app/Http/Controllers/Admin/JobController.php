@@ -24,12 +24,15 @@ class JobController extends Controller
             'jobs' => $this->jobService->getAllJob(),
         ];
 
-        return view(self::moduleDirectory.'index', $data);
+        return view(self::moduleDirectory . 'index', $data);
     }
 
     public function create()
     {
-        return view(self::moduleDirectory.'create');
+        $data = [
+            'categories' => $this->jobService->findCategory(),
+        ];
+        return view(self::moduleDirectory . 'create', $data);
     }
 
     public function store(Request $request)
@@ -50,16 +53,17 @@ class JobController extends Controller
             'job' => $this->jobService->findJobInfo($id),
         ];
 
-        return view(self::moduleDirectory.'details', $data);
+        return view(self::moduleDirectory . 'details', $data);
     }
 
     public function edit($id)
     {
         $data = [
             'job' => $this->jobService->findJobInfo($id),
+            'categories' => $this->jobService->findCategory(),
         ];
 
-        return view(self::moduleDirectory.'edit', $data);
+        return view(self::moduleDirectory . 'edit', $data);
     }
 
     public function update(Request $request, $id)

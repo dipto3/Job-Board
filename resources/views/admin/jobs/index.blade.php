@@ -53,6 +53,7 @@
                                 <thead>
                                     <tr>
                                         <th>Title</th>
+                                        <th>Category</th>
                                         <th>Company Name</th>
                                         <th>Published On</th>
                                         <th>Total views</th>
@@ -67,6 +68,7 @@
                                     @foreach ($jobs as $job)
                                         <tr>
                                             <td>{{ $job->title }}</td>
+                                            <td>{{ $job->category->name }}</td>
                                             <td>{{ $job->user->name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</td>
                                             <td>{{ $job->totalViews }}</td>

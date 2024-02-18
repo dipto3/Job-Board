@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobView;
 use Illuminate\Support\Facades\Auth;
@@ -9,9 +10,15 @@ use Illuminate\Support\Str;
 
 class JobService
 {
+    public function findCategory()
+    {
+        return Category::where('status', 1)->get();
+    }
+
     public function storeJob($request)
     {
         $loggedInUser = Auth::user();
+
 
         $jobLimit = $loggedInUser->companyInfo->package->limit;
 
@@ -23,6 +30,7 @@ class JobService
 
         return Job::create([
             'title' => $request->title,
+            'category_id' => $request->category,
             'uuid' => Str::uuid()->toString(),
             'user_id' => $loggedInUser->id,
             'tags' => $tags,
@@ -74,6 +82,7 @@ class JobService
         $tags = implode(',', $request->tags);
         $data = [
             'title' => $request->title,
+            'category_id' => $request->category,
             'user_id' => $loggedInUser->id,
             'tags' => $tags,
             'location' => $request->location,

@@ -42,6 +42,19 @@
                                             </div>
 
                                             <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">Category</label>
+                                                <div class="col-md-10">
+                                                    <select class="form-control" name="category">
+                                                        <option>Select</option>
+                                                        @foreach ($categories as $category)
+                                                            <option value="{{ $category->id }}">{{ $category->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
                                                 <label class="col-md-2 col-form-label"
                                                     for="example-placeholder">Tags</label>
                                                 <div class="col-md-10">

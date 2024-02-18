@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PackageSeeder::class);
         $this->call(RoleAndPermissionseeder::class);
         $this->call(AdminSeeder::class);
-
+        $this->call(JobCategorySeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
