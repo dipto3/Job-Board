@@ -74,7 +74,7 @@
                                         <option value="{{ $category->id }}">{{ $category->name }}
                                         </option>
                                     @endforeach
-                                    <input style="margin-left: 2px;" class="col" autocomplete="off" type="email"
+                                    <input style="margin-left: 2px;" class="col" autocomplete="off" name="email" type="email"
                                     placeholder="e-mail">
                                
                                 <button id="mc-submit" class="btn"><i class="fa fa-envelope-o"></i></button>

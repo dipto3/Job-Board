@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\JobController as FrontendJobController;
 
 use App\Http\Controllers\Admin\UserManageController;
-
+use App\Http\Controllers\Frontend\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,6 @@ Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('log
 Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('login');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
-
 //Admin manage users
 Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->name('show.user.company');
 Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::class, 'accept_account'])->name('update.active.account');
@@ -51,6 +50,7 @@ Route::get('/company/login-page', [CompanyLoginController::class, 'loginpage'])-
 Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name('company.pending');
 Route::post('/company/login', [CompanyLoginController::class, 'loginpost'])->name('company.login');
 
+Route::post('/company/login', [SubscriberController::class, 'store'])->name('subscriber.store');
 //Jobs
 Route::get('/job-create', [JobController::class, 'create'])->name('job.create');
 Route::post('/job-store', [JobController::class, 'store'])->name('job.store');
