@@ -19,6 +19,8 @@ class SubscriberController extends Controller
         $subscriber = $this->subscribersService->addSubscriber($request);
         if ($subscriber) {
             toastr()->addInfo('', 'Subscriber Created Successfully.');
-        } 
+        }
+
+        return redirect()->back();
     }
 }

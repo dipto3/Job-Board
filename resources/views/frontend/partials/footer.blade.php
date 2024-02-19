@@ -66,7 +66,8 @@
                     <div class="footer-widget-newsletter">
                         <p>Candidates can ‘subscribe’ to the jobs by selecting ‘Categories’ and will get notified via
                             email when any job is posted on the selected category.</p>
-                        <form id="mc-form" class="mc-form">
+                        <form id="subs" method="post">
+                            @csrf
                             <div class="row">
                                 <select class="col form-control" name="category">
                                     <option>Select</option>
@@ -74,10 +75,11 @@
                                         <option value="{{ $category->id }}">{{ $category->name }}
                                         </option>
                                     @endforeach
-                                    <input style="margin-left: 2px;" class="col" autocomplete="off" name="email" type="email"
-                                    placeholder="e-mail">
-                               
-                                <button id="mc-submit" class="btn"><i class="fa fa-envelope-o"></i></button>
+                                </select>
+                                <input style="margin-left: 2px;" class="col" autocomplete="off" name="email"
+                                    type="email" placeholder="e-mail">
+
+                                <button class="btn btn-primary"><i class="fa fa-envelope-o"></i></button>
                             </div>
 
                         </form>
@@ -112,3 +114,31 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#subs').submit(function(e) {
+            e.preventDefault();
+            var formData = {
+                category_id: $('select[name=category]').val(),
+                email: $('input[name=email]').val(),
+                _token: "{{ csrf_token() }}",
+            };
+
+            
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('subscriber.store') }}',
+                data: {
+                    category_id: $('select[name=category]').val(),
+                    email: $('input[name=email]').val(),
+                    _token: "{{ csrf_token() }}",
+                },
+                dataType: 'json',
+                success: function(response) {
+                    alert(response.message);
+                }
+            });
+        });
+    });
+</script>

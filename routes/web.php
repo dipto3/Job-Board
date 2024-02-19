@@ -50,7 +50,7 @@ Route::get('/company/login-page', [CompanyLoginController::class, 'loginpage'])-
 Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name('company.pending');
 Route::post('/company/login', [CompanyLoginController::class, 'loginpost'])->name('company.login');
 
-Route::post('/company/login', [SubscriberController::class, 'store'])->name('subscriber.store');
+Route::post('/subscriber', [SubscriberController::class, 'store'])->name('subscriber.store');
 //Jobs
 Route::get('/job-create', [JobController::class, 'create'])->name('job.create');
 Route::post('/job-store', [JobController::class, 'store'])->name('job.store');
