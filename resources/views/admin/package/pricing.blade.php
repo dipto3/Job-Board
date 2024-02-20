@@ -5,9 +5,6 @@
 
             <!-- Start Content-->
             <div class="container-fluid">
-
-
-
                 <div class="row row justify-content-center">
                     <div class="col-lg-9 center-page">
                         <div class="text-center">

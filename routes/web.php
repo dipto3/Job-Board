@@ -13,7 +13,7 @@ use App\Http\Controllers\Frontend\JobController as FrontendJobController;
 
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Frontend\SubscriberController;
-
+use App\Http\Controllers\SslCommerzPaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +64,18 @@ Route::get('/job-edit/{id}', [JobController::class, 'edit'])->name('job.edit');
 Route::put('/job-update/{id}', [JobController::class, 'update'])->name('job.update');
 Route::delete('/job-destroy/{id}', [JobController::class, 'destroy'])->name('job.destroy');
 Route::post('/job-status', [JobController::class, 'status'])->name('job.status');
+
+
+// SSLCOMMERZ Start
+Route::get('/checkout', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('checkout');
+// Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
