@@ -34,7 +34,7 @@
                             <p class="col " style="float: left;color:rgb(201, 15, 15); text-align:center;"> <strong>You
                                     are
                                     using Free
-                                    package, <a href="" style="color:rgb(201, 15, 15);"><u>Please
+                                    package, <a href="{{ route('package') }}" style="color:rgb(201, 15, 15);"><u>Please
                                             Buy Premium Package</u></a></strong>
                             </p>
                         @endif

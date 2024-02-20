@@ -7,6 +7,7 @@ use App\Http\Controllers\Company\CompanyLoginController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SubscribersController;
 use App\Http\Controllers\Frontend\JobController as FrontendJobController;
 
@@ -42,6 +43,8 @@ Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->
 Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::class, 'accept_account'])->name('update.active.account');
 
 Route::get('/subscribers-list', [SubscribersController::class, 'index'])->name('subscriber.list');
+
+Route::get('/package', [PackageController::class, 'package'])->name('package');
 //Company routes...
 
 //Company auth
