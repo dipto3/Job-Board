@@ -2,10 +2,13 @@
 
 namespace App\Services;
 
+use App\Mail\JobPost;
 use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobView;
+use App\Models\Subscriber;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class JobService
@@ -28,7 +31,7 @@ class JobService
         }
         $tags = implode(',', $request->tags);
 
-        return Job::create([
+        $job = Job::create([
             'title' => $request->title,
             'category_id' => $request->category,
             'uuid' => Str::uuid()->toString(),
@@ -45,6 +48,13 @@ class JobService
             'status' => $request->status,
             'link' => $request->link,
         ]);
+
+        $subscribers = Subscriber::where('category_id', $request->category)->get();
+        foreach ($subscribers as $subscriber) {
+            Mail::to($subscriber->email)->send(new JobPost($job));
+        }
+    
+        return $job;
     }
 
     public function getAllJob()
