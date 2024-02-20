@@ -28,13 +28,13 @@
                                     </div>
                                     <ul class="plan-stats list-unstyled text-center">
                                         <li><b>Unlimited</b> Job Post</li>
-                                      
+
                                         <li><b>Email</b> Support</li>
                                         <li class="mb-0"><b>24x7</b> Support</li>
                                     </ul>
 
                                     <div class="text-center mb-2">
-                                        <a href="#"
+                                        <a href="{{ route('checkout') }}"
                                             class="btn btn-success width-lg btn-md width-md btn-bordred btn-rounded waves-effect waves-light">Buy</a>
                                     </div>
                                 </div>
