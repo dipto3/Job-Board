@@ -7,7 +7,7 @@ use App\Http\Controllers\Company\CompanyLoginController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
-
+use App\Http\Controllers\Admin\SubscribersController;
 use App\Http\Controllers\Frontend\JobController as FrontendJobController;
 
 use App\Http\Controllers\Admin\UserManageController;
@@ -41,6 +41,7 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logo
 Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->name('show.user.company');
 Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::class, 'accept_account'])->name('update.active.account');
 
+Route::get('/subscribers-list', [SubscribersController::class, 'index'])->name('subscriber.list');
 //Company routes...
 
 //Company auth

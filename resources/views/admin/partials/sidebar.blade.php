@@ -47,11 +47,11 @@
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-plus"></i>
-                        <span> Pages </span>
+                        <span> Subscriber </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="page-starter.html">Starter Page</a></li>
+                        <li><a href="{{ route('subscriber.list') }}">List</a></li>
                     </ul>
                 </li>
 

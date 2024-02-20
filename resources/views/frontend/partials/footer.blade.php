@@ -132,6 +132,9 @@
                 dataType: 'json',
                 success: function(response) {
                     alert(response.message);
+                    $('#subs')[0].reset();
+                    $('.footer-widget-newsletter').load(location.href +
+                        ' .footer-widget-newsletter');
                 }
             });
         });

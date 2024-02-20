@@ -13,4 +13,9 @@ class SubscribersService
             'email' => $request->email,
         ]);
     }
+
+    public function allSubscriber()
+    {
+        return Subscriber::all();
+    }
 }

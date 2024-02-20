@@ -12,4 +12,10 @@ class Subscriber extends Model
         'category_id',
         'email',
     ];
+
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
