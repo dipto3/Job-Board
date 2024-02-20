@@ -9,7 +9,7 @@ class SubscribersService
     public function addSubscriber($request)
     {
         return Subscriber::create([
-            'category_id' => $request->category,
+            'category_id' => $request->category_id,
             'email' => $request->email,
         ]);
     }

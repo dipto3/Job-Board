@@ -66,10 +66,10 @@
                     <div class="footer-widget-newsletter">
                         <p>Candidates can ‘subscribe’ to the jobs by selecting ‘Categories’ and will get notified via
                             email when any job is posted on the selected category.</p>
-                        <form id="subs" method="post">
+                        <form id="subs" method="post" class="form">
                             @csrf
                             <div class="row">
-                                <select class="col form-control" name="category">
+                                <select class="col form-control" name="category_id">
                                     <option>Select</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}
@@ -114,23 +114,18 @@
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function() {
         $('#subs').submit(function(e) {
             e.preventDefault();
-            var formData = {
-                category_id: $('select[name=category]').val(),
-                email: $('input[name=email]').val(),
-                _token: "{{ csrf_token() }}",
-            };
-
-            
             $.ajax({
                 type: 'POST',
                 url: '{{ route('subscriber.store') }}',
                 data: {
-                    category_id: $('select[name=category]').val(),
+                    category_id: $('select[name=category_id]').val(),
                     email: $('input[name=email]').val(),
                     _token: "{{ csrf_token() }}",
                 },
