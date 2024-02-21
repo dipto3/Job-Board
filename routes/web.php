@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SubscribersController;
 use App\Http\Controllers\Frontend\JobController as FrontendJobController;
-
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Frontend\SubscriberController;
 use App\Http\Controllers\SslCommerzPaymentController;

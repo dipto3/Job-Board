@@ -16,11 +16,13 @@ class PackageSeeder extends Seeder
         Package::create([
             'name' => 'Free',
             'limit' => 3, 
+            'price' => 0,
         ]);
 
         Package::create([
             'name' => 'Premium',
-            'limit' => 'Unlimited', 
+            'limit' => 'Unlimited',
+            'price' => 500,
         ]);
     }
 }
