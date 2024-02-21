@@ -6,6 +6,7 @@ use App\Http\Controllers\Company\CompanyAuthController;
 use App\Http\Controllers\Company\CompanyLoginController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SubscribersController;
@@ -44,6 +45,8 @@ Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::
 Route::get('/subscribers-list', [SubscribersController::class, 'index'])->name('subscriber.list');
 
 Route::get('/package', [PackageController::class, 'package'])->name('package');
+
+Route::post('/package-store', [CartController::class, 'store'])->name('cart.store');
 //Company routes...
 
 //Company auth

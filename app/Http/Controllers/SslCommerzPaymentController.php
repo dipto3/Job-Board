@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 // use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SslCommerzPaymentController extends Controller
@@ -12,6 +14,7 @@ class SslCommerzPaymentController extends Controller
 
     public function exampleEasyCheckout()
     {
+        
         return view('admin.exampleEasycheckout');
     }
 
