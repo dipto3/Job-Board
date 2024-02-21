@@ -57,8 +57,6 @@
 
         </div> <!-- end content -->
 
-
-
         <!-- Footer Start -->
         <footer class="footer">
             <div class="container-fluid">
