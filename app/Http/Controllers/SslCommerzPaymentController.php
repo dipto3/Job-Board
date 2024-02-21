@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Cart;
+use App\Models\CompanyInfo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,9 @@ class SslCommerzPaymentController extends Controller
 
     public function exampleEasyCheckout()
     {
-        
-        return view('admin.exampleEasycheckout');
+        $loggedInUser = Auth::user()->id;
+        $cart = Cart::where('user_id', $loggedInUser)->first();
+        return view('admin.exampleEasycheckout', compact('cart'));
     }
 
     // public function exampleHostedCheckout()
@@ -81,6 +83,8 @@ class SslCommerzPaymentController extends Controller
                 'currency' => $post_data['currency']
             ]);
 
+
+
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
@@ -97,15 +101,19 @@ class SslCommerzPaymentController extends Controller
         # Here you have to receive all the order data to initate the payment.
         # Lets your oder trnsaction informations are saving in a table called "orders"
         # In orders table order uniq identity is "transaction_id","status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
+        $loggedInUser = Auth::user()->id;
+        $cart = Cart::where('user_id', $loggedInUser)->first();
 
         $post_data = array();
-        $post_data['total_amount'] = '10'; # You cant not pay less than 10
+        $post_data['total_amount'] = $cart->package->price;; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
+        $post_data['user_id'] = $cart->user_id;
+        $post_data['package_id'] = $cart->package->id;
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = 'Customer Name';
-        $post_data['cus_email'] = 'customer@mail.com';
+        $post_data['cus_name'] = $cart->user->name;
+        $post_data['cus_email'] = $cart->user->name;
         $post_data['cus_add1'] = 'Customer Address';
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
@@ -148,8 +156,16 @@ class SslCommerzPaymentController extends Controller
                 'status' => 'Pending',
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+                'currency' => $post_data['currency'],
+                'user_id' => $post_data['user_id'],
+                'package_id' => $post_data['package_id']
             ]);
+
+
+        $cart_id = $cart->id;
+
+        $cartdlt = Cart::find($cart_id);
+        $cartdlt->delete();
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
@@ -163,11 +179,20 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
-        echo "Transaction is Successful";
+
+        // echo "Transaction is Successful";
+
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
         $currency = $request->input('currency');
+        $orders = DB::table('orders')->where('transaction_id', $tran_id)->get();
+        foreach ($orders as $order) {
+            $user_id = $order->user_id;
+            $package_id = $order->package_id;
+        }
+        // dd($package_id);
+
 
         $sslc = new SslCommerzNotification();
 
@@ -189,6 +214,9 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 
+                $update_package = DB::table('company_infos')
+                    ->where('user_id', $user_id)
+                    ->update(['package_id' => $package_id]);
                 echo "<br >Transaction is successfully Completed";
             }
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {

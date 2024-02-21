@@ -12,4 +12,14 @@ class Cart extends Model
         'user_id',
         'package_id'
     ];
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
