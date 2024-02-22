@@ -79,6 +79,9 @@
                                         </div>
 
                                     </form>
+                                    <strong>Don't have an account?</strong><a
+                                        href="{{ route('company.register.page') }}">Sign
+                                        up</a>
 
                                 </div>
                             </div>

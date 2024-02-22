@@ -1,47 +1,100 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+    <meta charset="utf-8" />
+    <title>{{ config('app.name', 'Dashboard') }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    @include('admin.partials.assets.css')
+</head>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<body class="authentication-bg bg-primary authentication-bg-pattern d-flex align-items-center pb-0 vh-100">
+
+    <div class="account-pages w-100 mt-5 mb-5">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card mb-0">
+
+                        <div class="card-body p-4">
+
+                            <div class="account-box">
+                                <div class="account-logo-box">
+                                    <div class="text-center">
+                                        <a href="index.html">
+                                            <img src="assets/images/logo-dark.png" alt="" height="30">
+                                        </a>
+                                    </div>
+                                    <h5 class="text-uppercase mb-1 mt-4">Candidate Sign In</h5>
+
+                                </div>
+
+                                <div class="account-content mt-4">
+                                    <form class="form-horizontal" action="{{ route('login') }}" method="post">
+                                        @csrf
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label for="emailaddress">Email address</label>
+                                                <input class="form-control" type="email" name="email"
+                                                    id="emailaddress" required="" placeholder="john@deo.com">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <a href="page-recoverpw.html"
+                                                    class="text-muted float-right"><small>Forgot your
+                                                        password?</small></a>
+                                                <label for="password">Password</label>
+                                                <input class="form-control" type="password" name="password"
+                                                    required="" id="password" placeholder="Enter your password">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12">
+
+                                                <div class="checkbox checkbox-success">
+                                                    <input id="remember" type="checkbox" checked="">
+                                                    <label for="remember">
+                                                        Remember me
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row text-center mt-2">
+                                            <div class="col-12">
+                                                <button
+                                                    class="btn btn-md btn-block btn-primary waves-effect waves-light"
+                                                    type="submit">Sign In</button>
+                                            </div>
+                                        </div>
+                                        <strong>Don't have an account?</strong><a href="{{ route('register') }}">Sign
+                                            up</a>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end card-body -->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end row -->
         </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+    @include('admin.partials.assets.js')
+</body>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

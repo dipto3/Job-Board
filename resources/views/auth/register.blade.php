@@ -1,52 +1,120 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+<head>
+    <meta charset="utf-8" />
+    <title>{{ config('app.name', 'Dashboard') }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    @include('admin.partials.assets.css')
+</head>
+
+<body class="authentication-bg bg-primary authentication-bg-pattern d-flex align-items-center pb-0 vh-100">
+
+    <div class="account-pages w-100 mt-5 mb-5">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card mb-0">
+
+                        <div class="card-body p-4">
+
+                            <div class="account-box">
+                                <div class="account-logo-box">
+                                    <div class="text-center">
+                                        <a href="index.html">
+                                            <img src="assets/images/logo-dark.png" alt="" height="30">
+                                        </a>
+                                    </div>
+                                    <h5 class="text-uppercase mb-1 mt-4">Sign Up</h5>
+                                    <p class="mb-0">Sign Up as a Candidate</p>
+                                </div>
+
+                                <div class="account-content mt-4">
+                                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                                        @csrf
+
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label for="emailaddress">Name</label>
+                                                <input class="form-control" type="text" name="name" id="name"
+                                                    required="" placeholder="john">
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="emailaddress">Email</label>
+                                                <input class="form-control" type="email" name="email"
+                                                    id="emailaddress" required="" placeholder="john@deo.com">
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="emailaddress">Phone</label>
+                                                <input class="form-control" type="number" name="contract_number"
+                                                    id="contract_number" required="" placeholder="+880">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <label for="password">Password</label>
+                                                <input class="form-control" type="password" name="password"
+                                                    required="" id="password" placeholder="Enter your password">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <a href="page-recoverpw.html"
+                                                    class="text-muted float-right"><small>Forgot your
+                                                        password?</small></a>
+                                                <label for="password">Confirm Password</label>
+                                                <input class="form-control" type="password" name="password_confirmation"
+                                                    required="" id="password" placeholder="Enter your password">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12">
+
+                                                <div class="checkbox checkbox-success">
+                                                    <input id="remember" type="checkbox" checked="">
+                                                    <label for="remember">
+                                                        Remember me
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                            <p><strong>Already have an account?</strong><a href="{{ route('login') }}">
+                                                    Login</a></p>
+                                        </div>
+
+                                        <div class="form-group row text-center mt-2">
+                                            <div class="col-12">
+                                                <button
+                                                    class="btn btn-md btn-block btn-primary waves-effect waves-light"
+                                                    type="submit">Sign In</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end card-body -->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end row -->
         </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+    @include('admin.partials.assets.js')
+</body>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

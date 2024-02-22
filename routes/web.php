@@ -51,7 +51,7 @@ Route::get('/job/{uuid}', [FrontendJobController::class, 'jobDetails'])->name('j
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 //Admin auth
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
-Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('login');
+Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('admin.login.check');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
 //Admin manage users

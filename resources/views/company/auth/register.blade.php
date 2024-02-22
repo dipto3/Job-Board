@@ -34,14 +34,15 @@
                                 </div>
 
                                 <div class="account-content mt-4">
-                                    <form class="form-horizontal" action="{{ route('company.register') }}" method="post">
+                                    <form class="form-horizontal" action="{{ route('company.register') }}"
+                                        method="post">
                                         @csrf
 
                                         <div class="form-group row">
                                             <div class="col-12">
                                                 <label for="emailaddress">Company Name</label>
-                                                <input class="form-control" type="name" name="name"
-                                                    id="name" required="" placeholder="john">
+                                                <input class="form-control" type="name" name="name" id="name"
+                                                    required="" placeholder="john">
                                             </div>
                                             <div class="col-12">
                                                 <label for="emailaddress">Compnay Email address</label>
@@ -55,8 +56,8 @@
                                             </div>
                                             <div class="col-12">
                                                 <label for="emailaddress">Website/LinkDin page </label>
-                                                <input class="form-control" type="name" name="webpage"
-                                                    id="webpage" required="" placeholder="www.johndeo.com">
+                                                <input class="form-control" type="name" name="webpage" id="webpage"
+                                                    required="" placeholder="www.johndeo.com">
                                             </div>
                                         </div>
 
@@ -82,6 +83,9 @@
                                                 </div>
 
                                             </div>
+                                            <p><strong>Already have an account?</strong><a
+                                                    href="{{ route('company.login.page') }}">
+                                                    Login</a></p>
                                         </div>
 
                                         <div class="form-group row text-center mt-2">

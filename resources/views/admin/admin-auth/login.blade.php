@@ -34,9 +34,9 @@
                                 </div>
 
                                 <div class="account-content mt-4">
-                                    <form class="form-horizontal" action="{{ route('login') }}" method="post">
+                                    <form class="form-horizontal" action="{{ route('admin.login.check') }}"
+                                        method="post">
                                         @csrf
-
                                         <div class="form-group row">
                                             <div class="col-12">
                                                 <label for="emailaddress">Email address</label>
