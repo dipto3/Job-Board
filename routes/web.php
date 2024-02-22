@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Company\CompanyAuthController;
 use App\Http\Controllers\Company\CompanyLoginController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Frontend\JobController as FrontendJobController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Frontend\SubscriberController;
 use App\Http\Controllers\SslCommerzPaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +26,20 @@ use App\Http\Controllers\SslCommerzPaymentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 //Frontend Routes...
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -80,4 +96,5 @@ Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
-//SSLCOMMERZ END
+
+require __DIR__ . '/auth.php';
