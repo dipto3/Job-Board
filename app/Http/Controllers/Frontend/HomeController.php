@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
+
+use App\Services\HomeService;
 
 class HomeController extends Controller
 {
+    protected $homeService;
+
+    public function __construct(HomeService $homeService)
+    {
+        $this->homeService = $homeService;
+    }
     public function home()
     {
-        $activeJobs = Job::where('status', 1)
-        ->where('deadline', '>=', now()->startOfDay())
-        ->get();
-        // dd(now()->startOfDay());
-        return view('frontend.home', compact('activeJobs'));
+        $data = $this->homeService->homeFeed();
+        return view('frontend.home', $data);
     }
 
     public function contact()

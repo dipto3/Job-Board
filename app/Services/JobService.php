@@ -53,7 +53,7 @@ class JobService
         foreach ($subscribers as $subscriber) {
             Mail::to($subscriber->email)->send(new JobPost($job));
         }
-    
+
         return $job;
     }
 
@@ -123,5 +123,22 @@ class JobService
     public function destroyJobInfo($id)
     {
         return Job::findOrFail($id)->delete();
+    }
+
+    public function jobDetailsPage($uuid, $request)
+    {
+        $job = Job::where('uuid', $uuid)->first();
+
+        //store ip adress for job view count
+        $ipAddress = $request->ip();
+        $existIp = JobView::where('job_id', $job->id)->where('ipAddress', $ipAddress)->first();
+        //check for store unique ip address
+        if (!$existIp) {
+            JobView::create([
+                'job_id' => $job->id,
+                'ipAddress' => $ipAddress
+            ]);
+        }
+        return $job;
     }
 }
