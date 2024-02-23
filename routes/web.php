@@ -56,6 +56,7 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logo
 
 //Admin manage users
 Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->name('show.user.company');
+Route::get('/candidate-list', [UserManageController::class, 'candidateList'])->name('candidate.list');
 Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::class, 'accept_account'])->name('update.active.account');
 
 Route::get('/subscribers-list', [SubscribersController::class, 'index'])->name('subscriber.list');
@@ -82,7 +83,6 @@ Route::get('/job-edit/{id}', [JobController::class, 'edit'])->name('job.edit');
 Route::put('/job-update/{id}', [JobController::class, 'update'])->name('job.update');
 Route::delete('/job-destroy/{id}', [JobController::class, 'destroy'])->name('job.destroy');
 Route::post('/job-status', [JobController::class, 'status'])->name('job.status');
-
 
 // SSLCOMMERZ Start
 Route::get('/checkout', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('checkout');

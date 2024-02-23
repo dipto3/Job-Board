@@ -28,6 +28,8 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{ route('show.user.company') }}">Company</a></li>
+                        <li><a href="{{ route('candidate.list') }}">Candidate</a></li>
+
 
                     </ul>
                 </li>

@@ -34,29 +34,17 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>E-mail</th>
-                                        <th>Account Status</th>
-                                        <th>Approve Account</th>
                                         <th>Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($candidates as $key => $user)
                                         <tr>
-                                            <td class="align-middle">{{ $user->id }}</td>
+                                            <td class="align-middle">{{ $key + 1 }}</td>
                                             <td class="align-middle">{{ $user->name }}</td>
                                             <td class="align-middle">{{ $user->email }}</td>
-                                            <td class="align-middle">{{ $user->companyInfo->approval }}</td>
-                                            <td>
-                                                <form style="margin:0; padding:0; decoration:none; background:none"
-                                                    method="post"
-                                                    action="{{ route('update.active.account', ['encryptedUserId' => encrypt($user->companyInfo->id)]) }}">
-                                                    @csrf
-                                                    <button type="submit" style=""
-                                                        class="btn btn-{{ $user->companyInfo->approval == 'pending' ? 'danger' : 'primary' }}">
-                                                        {{ $user->companyInfo->approval == 'pending' ? 'Approve' : 'Approved' }}
-                                                    </button>
-                                                </form>
-                                            </td>
+
                                             <td>
                                                 <div class="row">
                                                     <div class="button-list col-md-3">
