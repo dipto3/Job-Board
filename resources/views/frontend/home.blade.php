@@ -63,38 +63,7 @@
                 <p>Here's the most recent job listed on the website.</p>
             </div>
 
-            <!-- Job List Wrap Start -->
-            <div class="job-list-wrap">
-
-                @foreach ($activeJobs as $job)
-                    <!-- Job List Start -->
-                    <a href="{{ route('job.description', $job->uuid) }}" class="job-list row">
-                        <div class="company-logo col-auto">
-                            <img src="frontend/assets/images/companies/company-1.png" alt="Company Logo">
-                        </div>
-                        <div class="salary-type col-auto order-sm-3">
-                            <span class="salary-range">{{ $job->salary }}</span>
-                            <span class="badge bg-success">{{ $job->employment_type }}</span>
-                        </div>
-                        <div class="content col">
-                            <h6 class="title">{{ $job->title }}</h6>
-                            <ul class="meta">
-                                <li><strong class="text-primary">{{ $job->user->name }}</strong></li>
-                                <li><i class="fa fa-map-marker"></i> {{ $job->location }}</li>
-                                {{-- <li><i class="fa fa-map-marker"></i> {{ $job->user->companyInfo->contract_number }}</li> --}}
-                            </ul>
-                        </div>
-                    </a>
-                    <!-- Job List Start -->
-                @endforeach
-
-
-            </div>
-            <!-- Job List Wrap Start -->
-
-            <div class="text-center mt-4 mt-lg-5">
-                <a href="job-list.html" class="btn btn-primary">View All Jobs</a>
-            </div>
+            <livewire:homefeed />
 
         </div>
     </div>
@@ -192,8 +161,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="assets/images/companies/company-5.png"
-                                alt="company-1"></span>
+                        <span class="company-logo"><img src="assets/images/companies/company-5.png" alt="company-1"></span>
                         <h6 class="title">Greensoul</h6>
                         <span class="open-job">1 open positions</span>
                     </a>
@@ -203,8 +171,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="assets/images/companies/company-6.png"
-                                alt="company-1"></span>
+                        <span class="company-logo"><img src="assets/images/companies/company-6.png" alt="company-1"></span>
                         <h6 class="title">Generous</h6>
                         <span class="open-job">2 open positions</span>
                     </a>
