@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\JobService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -19,7 +20,10 @@ class JobController extends Controller
 
     public function index()
     {
-        // dd(Auth::user()->id);
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('index-job')) {
+            abort(403, 'Unauthorized Access!');
+        }
         $data = [
             'jobs' => $this->jobService->getAllJob(),
         ];
@@ -29,6 +33,10 @@ class JobController extends Controller
 
     public function create()
     {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('create-job')) {
+            abort(403, 'Unauthorized Access!');
+        }
         $data = [
             'categories' => $this->jobService->findCategory(),
         ];
@@ -58,6 +66,10 @@ class JobController extends Controller
 
     public function edit($id)
     {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('edit-job')) {
+            abort(403, 'Unauthorized Access!');
+        }
         $data = [
             'job' => $this->jobService->findJobInfo($id),
             'categories' => $this->jobService->findCategory(),
@@ -87,6 +99,10 @@ class JobController extends Controller
 
     public function destroy($id)
     {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('delete-job')) {
+            abort(403, 'Unauthorized Access!');
+        }
         $job = $this->jobService->destroyJobInfo($id);
         if ($job) {
             toastr()->addInfo('', 'Job Removed Successfully.');

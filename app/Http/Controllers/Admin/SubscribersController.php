@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\SubscribersService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscribersController extends Controller
 {
@@ -18,6 +19,10 @@ class SubscribersController extends Controller
 
     public function index()
     {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('index-subscriber')) {
+            abort(403, 'Unauthorized Access!');
+        }
         $data = [
             'subscribers' => $this->subscribersService->allSubscriber(),
         ];

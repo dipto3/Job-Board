@@ -10,6 +10,8 @@ use App\Models\Subscriber;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class JobService
 {
@@ -21,7 +23,9 @@ class JobService
     public function storeJob($request)
     {
         $loggedInUser = Auth::user();
-
+        if (is_null($loggedInUser) || !$loggedInUser->can('create-job')) {
+            abort(403, 'Unauthorized Access!');
+        }
 
         $jobLimit = $loggedInUser->companyInfo->package->limit;
 

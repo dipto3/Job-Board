@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -19,6 +20,10 @@ class RoleController extends Controller
 
     public function index()
     {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('index-role')) {
+            abort(403, 'Unauthorized Access!');
+        }
         // dd(Auth::user()->id);
         $data = [
             'roles' => $this->roleService->getAllRole(),
@@ -29,6 +34,10 @@ class RoleController extends Controller
 
     public function create()
     {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('create-role')) {
+            abort(403, 'Unauthorized Access!');
+        }
         // $data = [
         //     'categories' => $this->roleService->findCategory(),
         // ];
@@ -46,6 +55,10 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('delete-role')) {
+            abort(403, 'Unauthorized Access!');
+        }
         $role = $this->roleService->destroyRoleInfo($id);
         toastr()->addInfo('', 'Role Removed Successfully.');
         return redirect()->route('role.index');
