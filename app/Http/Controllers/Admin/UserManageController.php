@@ -13,7 +13,7 @@ class UserManageController extends Controller
     public function index()
     {
         $users = User::where('role', 'Company')->get();
-        return view('admin.users.company', compact('users'));
+        return view('admin.users.company.index', compact('users'));
     }
     public function accept_account($encryptedUserId)
     {
@@ -24,6 +24,12 @@ class UserManageController extends Controller
         $user->update(['approval' => $user->approval == 'pending' ? 'approved' : 'pending']);
 
         return back();
+    }
+
+    public function companyDetails($id)
+    {
+        $company = User::where('role', 'Company')->where('id', $id)->first();
+        return view('admin.users.company.details', compact('company'));
     }
 
     public function candidateList()
@@ -37,7 +43,6 @@ class UserManageController extends Controller
         $candidate = User::where('role', 'Candidate')->where('id', $id)->first();
         return view('admin.users.candidate.details', compact('candidate'));
     }
-
 
     public function candidateRemove($id)
     {
