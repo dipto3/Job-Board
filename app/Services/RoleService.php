@@ -3,10 +3,15 @@
 namespace App\Services;
 
 use PHPUnit\Framework\MockObject\Stub\ReturnStub;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleService
 {
+    public function allPermission()
+    {
+        return Permission::all();
+    }
     public function getAllRole()
     {
         return Role::all();
@@ -14,9 +19,17 @@ class RoleService
 
     public function storeRole($request)
     {
-        return Role::create([
+
+        $role = Role::create([
             'name' => $request->name,
         ]);
+        $permissions = $request->input('permissions');
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        return $role;
     }
 
     public function destroyRoleInfo($id)

@@ -38,10 +38,10 @@ class RoleController extends Controller
         if (is_null($loggedInUser) || !$loggedInUser->can('create-role')) {
             abort(403, 'Unauthorized Access!');
         }
-        // $data = [
-        //     'categories' => $this->roleService->findCategory(),
-        // ];
-        return view(self::moduleDirectory . 'create');
+        $data = [
+            'permissions' => $this->roleService->allPermission(),
+        ];
+        return view(self::moduleDirectory . 'create', $data);
     }
 
     public function store(Request $request)
