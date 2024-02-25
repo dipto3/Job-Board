@@ -23,6 +23,18 @@
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-sidebar"></i>
+                        <span> Role </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{ route('role.index') }}">Roles</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-sidebar"></i>
                         <span> Users </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -69,15 +81,15 @@
                 </li>
 
             </ul>
-          
+
 
         </div>
         <!-- End Sidebar -->
 
         <div class="clearfix"></div>
-       
+
     </div>
-    
+
     <!-- Sidebar -left -->
 
 </div>

@@ -89,6 +89,9 @@ Route::delete('/job-destroy/{id}', [JobController::class, 'destroy'])->name('job
 Route::post('/job-status', [JobController::class, 'status'])->name('job.status');
 //Role
 Route::get('/role-index', [RoleController::class, 'index'])->name('role.index');
+Route::get('/role-create', [RoleController::class, 'create'])->name('role.create');
+Route::post('/role-store', [RoleController::class, 'store'])->name('role.store');
+Route::delete('/role-destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
 
 // SSLCOMMERZ Start
 Route::get('/checkout', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('checkout');

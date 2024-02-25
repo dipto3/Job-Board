@@ -30,11 +30,11 @@
                 <div class="row">
 
                     <div class="col-12">
-                       
+
 
                         <div class="card-box table-responsive">
 
-                            <a href="{{ route('job.create') }}" type="button" style="float: right;"
+                            <a href="{{ route('role.create') }}" type="button" style="float: right;"
                                 class="col-md-2 btn btn-info  waves-effect waves-light">Add New<i
                                     class="mdi mdi-plus"></i></a>
 
@@ -46,20 +46,21 @@
                                 <thead>
                                     <tr>
                                         <th>Serial No.</th>
-                                      
+
                                         <th>Name</th>
                                         {{-- <th>Status</th> --}}
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    @foreach ($jobs as $job)
+                                    @foreach ($roles as $key => $role)
                                         <tr>
-                                            <td>{{ $job->title }}</td>
-                                       
-                                            bon::parse($job->deadline)->format('d F, Y (l)') }}</td>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $role->name }}</td>
+
                                             {{-- <td>
                                                
                                                
@@ -89,9 +90,9 @@
 
                                                     </div>
                                                     <div class="button-list col-md-2 ml-1">
-                                                        <form action="" method="post">
+                                                        <form action="{{ route('role.destroy', $role->id) }}" method="post">
                                                             @csrf
-                                                            {{-- @method('delete') --}}
+                                                            @method('delete')
 
                                                             <button type="submit"
                                                                 class="btn btn-icon waves-effect btn-secondary show-alert-delete-box btn-sm"
