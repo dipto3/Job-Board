@@ -36,4 +36,8 @@ class RoleService
     {
         return Role::findOrFail($id)->delete();
     }
+    public function rolePermission($id)
+    {
+        return Role::with('permissions')->findOrFail($id);
+    }
 }

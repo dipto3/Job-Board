@@ -75,7 +75,7 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="button-list col-md-3">
-                                                        <a href=""
+                                                        <a href="{{ route('role.details', $role->id) }}"
                                                             class="btn btn-icon waves-effect btn-secondary btn-sm"><i
                                                                 style="font-size: 14px;" class="far fa-eye"></i> </a>
 
@@ -90,7 +90,8 @@
 
                                                     </div>
                                                     <div class="button-list col-md-2 ml-1">
-                                                        <form action="{{ route('role.destroy', $role->id) }}" method="post">
+                                                        <form action="{{ route('role.destroy', $role->id) }}"
+                                                            method="post">
                                                             @csrf
                                                             @method('delete')
 

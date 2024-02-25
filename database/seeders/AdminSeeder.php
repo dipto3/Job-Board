@@ -25,7 +25,6 @@ class AdminSeeder extends Seeder
                 'role_id' => $role->id
             ]);
             $admin->syncRoles('Admin');
-            // $admin->assignRole($role);
         }
     }
 }

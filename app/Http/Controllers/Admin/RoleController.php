@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -62,5 +64,15 @@ class RoleController extends Controller
         $role = $this->roleService->destroyRoleInfo($id);
         toastr()->addInfo('', 'Role Removed Successfully.');
         return redirect()->route('role.index');
+    }
+    public function details($id)
+    {
+        $data = [
+            'roles' => $this->roleService->rolePermission($id),
+        ];
+
+        // dd($role->permissions->name);
+
+        return view(self::moduleDirectory . 'details', $data);
     }
 }

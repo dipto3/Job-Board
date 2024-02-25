@@ -93,6 +93,7 @@ Route::post('/job-status', [JobController::class, 'status'])->name('job.status')
 Route::get('/role-index', [RoleController::class, 'index'])->name('role.index');
 Route::get('/role-create', [RoleController::class, 'create'])->name('role.create');
 Route::post('/role-store', [RoleController::class, 'store'])->name('role.store');
+Route::get('/role-details/{id}', [RoleController::class, 'details'])->name('role.details');
 Route::delete('/role-destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
 
 

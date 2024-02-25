@@ -17,7 +17,7 @@
                                     <li class="breadcrumb-item active">Basic Inputs</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Details Job</h4>
+                            <h4 class="page-title">Role's Permission List</h4>
                         </div>
                     </div>
                 </div>
@@ -30,128 +30,16 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div>
-                                        <form class="form-horizontal">
+                                        <h4>{{ $roles->name }}</h4>
 
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="simpleinput">Title</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="title" id="simpleinput"
-                                                        class="form-control" value="{{ $job->title }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="simpleinput">Category</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="category" id="simpleinput"
-                                                        class="form-control" value="{{ $job->category->name }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-placeholder">Tags</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="tags[]" id="example-placeholder"
-                                                        class="form-control" value="{{ $job->tags }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-placeholder">Location</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="location" id="example-placeholder"
-                                                        class="form-control" value="{{ $job->location }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-number">salary</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-number" type="number"
-                                                        name="salary" value="{{ $job->salary }}" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-number">Experience</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-number" type="number"
-                                                        name="experience" value="{{ $job->experience }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Employment Type</label>
-                                                <div class="col-md-10">
-                                                    <select class="form-control" name="employment_type" readonly>
-                                                        <option>{{ $job->experience }}</option>
-
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Gender</label>
-                                                <div class="col-md-10">
-                                                    <select class="form-control" name="gender" readonly>
-                                                        <option>{{ $job->gender }}</option>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
-                                                        <option value="any">Any</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-date">Published
-                                                    on</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-date" name="published"
-                                                        value="{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}"
-                                                        readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-date">Deadline</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-date" name="deadline"
-                                                        value="{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}"
-                                                        readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Application Link</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" name="link"
-                                                        value="{{ $job->link }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Status</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" name="status"
-                                                        value="{{ $job->status == 1 ? 'Active' : 'Inactive' }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-textarea">Description</label>
-                                                <div class="col-md-10">
-
-                                                    <p class="form-control">{!! $job->description !!}</p>
-
-                                                </div>
-                                            </div>
-
-                                        </form>
+                                        <ul>
+                                            @forelse ($roles->permissions as $permission)
+                                                <li class="">{{ $permission->name }}</li>
+                                            @empty
+                                                <Strong style="color: rgb(173, 21, 21);">
+                                                    No permissions found for this role.</Strong>
+                                            @endforelse
+                                        </ul>
 
                                     </div>
                                 </div>
