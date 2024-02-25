@@ -26,7 +26,6 @@ class RoleController extends Controller
         if (is_null($loggedInUser) || !$loggedInUser->can('index-role')) {
             abort(403, 'Unauthorized Access!');
         }
-        // dd(Auth::user()->id);
         $data = [
             'roles' => $this->roleService->getAllRole(),
         ];
@@ -49,10 +48,29 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $role = $this->roleService->storeRole($request);
-
         toastr()->addInfo('', 'Role Created Successfully.');
-
         return redirect()->route('role.index');
+    }
+
+    public function edit($id)
+    {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('edit-role')) {
+            abort(403, 'Unauthorized Access!');
+        }
+        $data = [
+            'role' => $this->roleService->roleInfo($id),
+            'permissions' => $this->roleService->allPermission()
+        ];
+
+        return view(self::moduleDirectory . 'edit', $data);
+    }
+
+    public function update($id, Request $request)
+    {
+        $role = $this->roleService->updateRole($id, $request);
+        return redirect()->route('role.index');
+        toastr()->addInfo('', 'Role Updates Successfully.');
     }
 
     public function destroy($id)
@@ -70,9 +88,6 @@ class RoleController extends Controller
         $data = [
             'roles' => $this->roleService->rolePermission($id),
         ];
-
-        // dd($role->permissions->name);
-
         return view(self::moduleDirectory . 'details', $data);
     }
 }

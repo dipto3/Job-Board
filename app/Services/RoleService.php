@@ -32,6 +32,25 @@ class RoleService
         return $role;
     }
 
+    public function updateRole($id, $request)
+    {
+        $role =  Role::findOrFail($id);
+        $role->update([
+            'name' => $request->name,
+        ]);
+        $permissions = $request->input('permissions');
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        return $role;
+    }
+    public function roleInfo($id)
+    {
+        return Role::findOrFail($id);
+    }
+
     public function destroyRoleInfo($id)
     {
         return Role::findOrFail($id)->delete();

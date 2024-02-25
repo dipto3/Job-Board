@@ -82,7 +82,7 @@
 
                                                     </div>
                                                     <div class="button-list col-md-3 ml-1">
-                                                        <a href="">
+                                                        <a href="{{ route('role.edit', $role->id) }}">
                                                             <button type="button"
                                                                 class="btn btn-icon waves-effect btn-secondary btn-sm"><i
                                                                     style="font-size: 14px;" class="fas fa-edit"></i>

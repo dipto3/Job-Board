@@ -13,8 +13,8 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Icons</a></li>
-                                    <li class="breadcrumb-item active">Basic Inputs</li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Role</a></li>
+                                    <li class="breadcrumb-item active">Roles</li>
                                 </ol>
                             </div>
                             <h4 class="page-title">Role's Permission List</h4>

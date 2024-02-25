@@ -29,141 +29,35 @@
                         <div class="card-box">
 
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-4">
                                     <div>
-                                        <form class="form-horizontal" action="{{ route('job.update', $job->id) }}"
+                                        <form class="form-horizontal" action="{{ route('role.update', $role->id) }}"
                                             method="post">
                                             @method('put')
                                             @csrf
                                             <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="simpleinput">Title</label>
+                                                <label class="col-md-2 col-form-label" for="simpleinput">Name</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" name="title" id="simpleinput"
-                                                        class="form-control" value="{{ $job->title }}">
+                                                    <input type="text" name="name" id="simpleinput"
+                                                           class="form-control" value="{{ $role->name }}" placeholder="Role name">
                                                 </div>
                                             </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Category</label>
-                                                <div class="col-md-10">
-                                                    <select class="form-control" name="category">
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                            <div class="form-group">
+                                                <label for="name">Permissions</label>
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="checkPermissionAll">
+                                                    <label class="form-check-label" for="checkPermissionAll">All</label>
                                                 </div>
+                                                <hr>
+                                                @foreach ($permissions as $permission)
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" name="permissions[]" {{$role->hasPermissionTo($permission->name) ? 'checked' : ''}} id="checkPermission{{ $permission->id }}" value="{{ $permission->name }}">
+                                                        <label class="form-check-label"
+                                                               for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
+                                                    </div>
+                                                @endforeach
                                             </div>
 
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-placeholder">Tags</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" data-role="tagsinput" name="tags[]"
-                                                        id="example-placeholder" class="form-control"
-                                                        value="{{ $job->tags }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-placeholder">Location</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="location" id="example-placeholder"
-                                                        class="form-control" value="{{ $job->location }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-number">salary</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-number" type="number"
-                                                        name="salary" value="{{ $job->salary }}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-number">Experience</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-number" type="number"
-                                                        name="experience"value="{{ $job->experience }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Employment Type</label>
-                                                <div class="col-md-10">
-                                                    <select class="form-control" name="employment_type">
-                                                        <option>{{ $job->employment_type }}</option>
-                                                        <option value="fulltime">Full-Time</option>
-                                                        <option value="parttime">Part-Time</option>
-                                                        <option value="freelance">Freelance</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Gender</label>
-                                                <div class="col-md-10">
-                                                    <select class="form-control" name="gender">
-                                                        <option>{{ $job->gender }}</option>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
-                                                        <option value="any">Any</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-date">Published
-                                                    on</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" id="example-date" name="published"
-                                                        type="date"
-                                                        value="{{ \Carbon\Carbon::parse($job->published)->format('Y-m-d') }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label" for="example-date">Deadline</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" type="date" id="example-date"
-                                                        name="deadline"
-                                                        value="{{ \Carbon\Carbon::parse($job->deadline)->format('Y-m-d') }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Application Link</label>
-                                                <div class="col-md-10">
-                                                    <input placeholder="URL" class="form-control" type="url"
-                                                        name="link" value="{{ $job->link }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Status</label>
-                                                <div class="col-md-10">
-                                                    <select class="form-control" name="status">
-                                                        <option value="1">{{ $job->status }}</option>
-                                                        <option value="1">Active</option>
-                                                        <option value="0">Inactive</option>
-
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label"
-                                                    for="example-textarea">Description</label>
-                                                <div class="col-md-10  ">
-                                                    <textarea class="form-control summernote" name="description" rows="5" id="example-textarea">{{ $job->description }}</textarea>
-                                                </div>
-                                            </div>
                                             <button style="float: right;color:white;" type="submit"
                                                 class="btn btn-success waves-effect waves-light">Submit</button>
                                         </form>
