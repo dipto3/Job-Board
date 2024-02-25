@@ -19,45 +19,48 @@
 
                     </ul>
                 </li>
+                @can('role')
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="fe-sidebar"></i>
+                            <span> Role </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{ route('role.index') }}">Roles</a></li>
 
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-sidebar"></i>
-                        <span> Role </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{ route('role.index') }}">Roles</a></li>
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-sidebar"></i>
-                        <span> Users </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{ route('show.user.company') }}">Company</a></li>
-                        <li><a href="{{ route('candidate.list') }}">Candidate</a></li>
+                        </ul>
+                    </li>
+                @endcan
+                @can('user')
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="fe-sidebar"></i>
+                            <span> Users </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{ route('show.user.company') }}">Company</a></li>
+                            <li><a href="{{ route('candidate.list') }}">Candidate</a></li>
 
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                @endcan
+                @can('job')
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="fe-sidebar"></i>
+                            <span> Job </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{ route('job.index') }}">Jobs</a></li>
 
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-sidebar"></i>
-                        <span> Job </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{ route('job.index') }}">Jobs</a></li>
-
-                    </ul>
-                </li>
-
+                        </ul>
+                    </li>
+                @endcan
+                @can('subscriber')
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-plus"></i>
@@ -68,18 +71,7 @@
                         <li><a href="{{ route('subscriber.list') }}">List</a></li>
                     </ul>
                 </li>
-
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-plus-square"></i>
-                        <span> Extra Pages </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="extras-about.html">About Us</a></li>
-                    </ul>
-                </li>
-
+                 @endcan
             </ul>
 
 

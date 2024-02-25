@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class CompanyAuthController extends Controller
 {
@@ -17,14 +18,16 @@ class CompanyAuthController extends Controller
         return view('company.auth.register');
     }
 
-    public function registerPost(Request $request)
+    public function register(Request $request)
     {
+        $role = Role::where('name', 'Company')->first();
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'Company',
+            'role_id' => $role->id,
         ]);
+        $user->syncRoles('Company');
 
         CompanyInfo::create([
             'user_id' => $user->id,
