@@ -76,6 +76,5 @@
             </div>
         </footer>
         <!-- end Footer -->
-
     </div>
 @endsection

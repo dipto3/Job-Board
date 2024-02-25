@@ -48,7 +48,7 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="button-list col-md-3">
-                                                        <a href=""
+                                                        <a href="{{ route('candidate.details', $user->id) }}"
                                                             class="btn btn-icon waves-effect btn-secondary btn-sm"><i
                                                                 style="font-size: 14px;" class="far fa-eye"></i> </a>
 
@@ -63,7 +63,8 @@
 
                                                     </div>
                                                     <div class="button-list col-md-2 ml-1">
-                                                        <form action="" method="post">
+                                                        <form action="{{ route('candidate.destroy', $user->id) }}"
+                                                            method="post">
                                                             @csrf
                                                             @method('delete')
 
@@ -106,3 +107,58 @@
 
     </div>
 @endsection
+@push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).on('click', '.show-alert-delete-box', function(event) {
+                var form = $(this).closest("form");
+
+                event.preventDefault();
+                swal({
+                    title: "Are you sure you want to delete this record?",
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    type: "warning",
+                    buttons: ["Cancel", "Yes!"],
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#example").DataTable()
+        });
+        $('.switch_change').on('change', function(e) {
+            e.preventDefault();
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).attr('id');
+
+            $.ajax({
+
+                url: '{{ route('job.status') }}',
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    status: status,
+                    id: id
+                },
+
+                success: function(data) {
+
+                    toastr.success(data.message);
+                }
+            });
+        });
+    </script>
+@endpush

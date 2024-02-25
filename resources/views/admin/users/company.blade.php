@@ -64,7 +64,6 @@
                                                             class="btn btn-icon waves-effect btn-secondary btn-sm"><i
                                                                 style="font-size: 14px;" class="far fa-eye"></i> </a>
 
-
                                                     </div>
                                                     <div class="button-list col-md-3 ml-1">
                                                         <a href="">

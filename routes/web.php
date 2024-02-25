@@ -56,9 +56,12 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logo
 
 //Admin manage users
 Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->name('show.user.company');
-Route::get('/candidate-list', [UserManageController::class, 'candidateList'])->name('candidate.list');
+
 Route::post('/company/accept_account/{encryptedUserId}', [UserManageController::class, 'accept_account'])->name('update.active.account');
 
+Route::get('/candidate-list', [UserManageController::class, 'candidateList'])->name('candidate.list');
+Route::get('/candidate-details/{id}', [UserManageController::class, 'candidateDetails'])->name('candidate.details');
+Route::delete('/candidate-list/{id}', [UserManageController::class, 'candidateRemove'])->name('candidate.destroy');
 Route::get('/subscribers-list', [SubscribersController::class, 'index'])->name('subscriber.list');
 
 Route::get('/package', [PackageController::class, 'package'])->name('package');
