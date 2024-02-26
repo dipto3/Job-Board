@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RoleFormRequest;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,8 +46,9 @@ class RoleController extends Controller
         return view(self::moduleDirectory . 'create', $data);
     }
 
-    public function store(Request $request)
+    public function store(RoleFormRequest $request)
     {
+        $request->validated();
         $role = $this->roleService->storeRole($request);
         toastr()->addInfo('', 'Role Created Successfully.');
         return redirect()->route('role.index');

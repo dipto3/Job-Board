@@ -33,8 +33,11 @@
                                         <div class="form-group row">
                                             <label class="col-md-2 col-form-label" for="simpleinput">Name</label>
                                             <div class="col-md-10">
-                                                <input type="text" name="name" id="simpleinput"
-                                                       class="form-control" placeholder="Role name">
+                                                <input type="text" name="name" id="simpleinput" class="form-control"
+                                                    placeholder="Role name" value="{{ old('name') }}">
+                                                @error('name')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -47,15 +50,15 @@
                                             @foreach ($permissions as $permission)
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" name="permissions[]"
-                                                           id="checkPermission{{ $permission->id }}"
-                                                           value="{{ $permission->name }}">
+                                                        id="checkPermission{{ $permission->id }}"
+                                                        value="{{ $permission->name }}">
                                                     <label class="form-check-label"
-                                                           for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
+                                                        for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
                                                 </div>
                                             @endforeach
                                         </div>
                                         <button style="float: right;color:white;" type="submit"
-                                                class="btn btn-success waves-effect waves-light">Submit
+                                            class="btn btn-success waves-effect waves-light">Submit
                                         </button>
                                     </form>
                                 </div>
