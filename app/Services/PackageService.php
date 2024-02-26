@@ -24,4 +24,9 @@ class PackageService
             'limit' => $request->limit,
         ]);
     }
+
+    public function findPackage($id)
+    {
+        return Package::findOrFail($id);
+    }
 }

@@ -55,4 +55,17 @@ class PackageController extends Controller
         toastr()->addInfo('', 'Package Created Successfully.');
         return redirect()->route('package.index');
     }
+
+    public function edit($id)
+    {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('edit-package')) {
+            abort(403, 'Unauthorized Access!');
+        }
+        $data = [
+            'package' => $this->packageService->findPackage($id),
+        ];
+
+        return view(self::moduleDirectory . 'edit', $data);
+    }
 }
