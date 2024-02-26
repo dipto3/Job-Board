@@ -75,4 +75,17 @@ class PackageController extends Controller
         toastr()->addInfo('', 'Package Updated Successfully.');
         return redirect()->route('package.index');
     }
+
+    public function destroy($id)
+    {
+        $loggedInUser = Auth::user();
+        if (is_null($loggedInUser) || !$loggedInUser->can('delete-package')) {
+            abort(403, 'Unauthorized Access!');
+        }
+        $this->packageService->packageRemove($id);
+
+        toastr()->addInfo('', 'Package Removed Successfully.');
+
+        return redirect()->route('package.index');
+    }
 }

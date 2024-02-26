@@ -38,4 +38,8 @@ class PackageService
             'limit' => $request->limit,
         ]);
     }
+    public function packageRemove($id)
+    {
+        return Package::findOrFail($id)->delete();
+    }
 }

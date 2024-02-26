@@ -103,6 +103,7 @@ Route::get('/package-create', [PackageController::class, 'create'])->name('packa
 Route::post('/package-store', [PackageController::class, 'store'])->name('package.store');
 Route::get('/package-edit/{id}', [PackageController::class, 'edit'])->name('package.edit');
 Route::put('/package-update/{id}', [PackageController::class, 'update'])->name('package.update');
+Route::delete('/package-delete/{id}', [PackageController::class, 'destroy'])->name('package.destroy');
 // SSLCOMMERZ Start
 Route::get('/checkout', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('checkout');
 // Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);

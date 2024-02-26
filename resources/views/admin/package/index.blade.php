@@ -30,7 +30,7 @@
                 <div class="row">
 
                     <div class="col-12">
-                        
+
 
                         <div class="card-box table-responsive">
 
@@ -81,9 +81,10 @@
 
                                                     </div>
                                                     <div class="button-list col-md-2 ml-1">
-                                                        <form action="" method="post">
+                                                        <form action="{{ route('package.destroy', $package->id) }}"
+                                                            method="post">
                                                             @csrf
-                                                            {{-- @method('delete') --}}
+                                                            @method('delete')
 
                                                             <button type="submit"
                                                                 class="btn btn-icon waves-effect btn-secondary show-alert-delete-box btn-sm"
