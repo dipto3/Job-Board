@@ -30,7 +30,7 @@
                 <div class="row">
 
                     <div class="col-12">
-                        @if (Auth::user()->role === 'Company' && Auth::user()->companyInfo->package->name === 'Free')
+                        @if (Auth::user()->role_id == 2 && Auth::user()->companyInfo->package->name === 'Free')
                             <p class="col " style="float: left;color:rgb(201, 15, 15); text-align:center;"> <strong>You
                                     are
                                     using Free

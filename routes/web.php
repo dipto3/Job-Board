@@ -73,7 +73,7 @@ Route::get('/subscribers-list', [SubscribersController::class, 'index'])->name('
 
 Route::get('/package', [PackageController::class, 'package'])->name('package');
 
-Route::post('/package-store', [CartController::class, 'store'])->name('cart.store');
+Route::post('/package-cart', [CartController::class, 'store'])->name('package.cart');
 //Company routes...
 
 //Company auth

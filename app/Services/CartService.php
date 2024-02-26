@@ -10,6 +10,7 @@ class CartService
 {
     public function cartStore($request)
     {
+        // dd($request->all());
         $loggedInUser = Auth::user()->id;
         $package_id = $request->id;
 
@@ -29,7 +30,6 @@ class CartService
                 'user_id' => Auth::user()->id,
                 'package_id' => $package_id
             ]);
-            
         }
     }
 }
