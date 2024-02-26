@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PackageFormRequest;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use App\Models\Cart;
@@ -49,8 +50,9 @@ class PackageController extends Controller
         return view(self::moduleDirectory . 'create');
     }
 
-    public function store(Request $request)
+    public function store(PackageFormRequest $request)
     {
+        $request->validated();
         $package = $this->packageService->storePackage($request);
         toastr()->addInfo('', 'Package Created Successfully.');
         return redirect()->route('package.index');

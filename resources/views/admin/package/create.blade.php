@@ -29,7 +29,7 @@
                         <div class="card-box">
 
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-6">
                                     <div>
                                         <form class="form-horizontal" action="{{ route('package.store') }}" method="post">
                                             @csrf
@@ -37,7 +37,11 @@
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Name</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="name" id="simpleinput"
-                                                        class="form-control" placeholder="Package Name">
+                                                        class="form-control" placeholder="Package Name"
+                                                        value="{{ old('name') }}">
+                                                    @error('name')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -45,18 +49,27 @@
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Limit</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="limit" id="simpleinput"
-                                                        class="form-control" placeholder="Package Limit">
+                                                        class="form-control" placeholder="Package Limit"
+                                                        value="{{ old('limit') }}">
+                                                    @error('limit')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Price</label>
                                                 <div class="col-md-10">
-                                                    <input type="number" name="price" id="simpleinput"
-                                                        class="form-control" placeholder="Package Price">
+                                                    <input type="text" name="price" id="simpleinput"
+                                                        class="form-control" placeholder="Package Price"
+                                                        value="{{ old('price') }}">
+
+                                                    @error('price')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                      
+
                                             <button style="float: right;color:white;" type="submit"
                                                 class="btn btn-success waves-effect waves-light">Submit</button>
                                         </form>
