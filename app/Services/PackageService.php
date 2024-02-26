@@ -38,6 +38,12 @@ class PackageService
             'limit' => $request->limit,
         ]);
     }
+    public function status($request)
+    {
+        return Package::where('id', $request->id)->update([
+            'status' => $request->status,
+        ]);
+    }
     public function packageRemove($id)
     {
         return Package::findOrFail($id)->delete();

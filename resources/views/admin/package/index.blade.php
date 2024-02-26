@@ -170,7 +170,7 @@
 
             $.ajax({
 
-                url: '{{ route('job.status') }}',
+                url: '{{ route('package.status') }}',
                 type: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",

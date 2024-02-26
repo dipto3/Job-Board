@@ -76,6 +76,13 @@ class PackageController extends Controller
         return redirect()->route('package.index');
     }
 
+    public function status(Request $request)
+    {
+        $this->packageService->status($request);
+
+        return redirect()->back();
+    }
+
     public function destroy($id)
     {
         $loggedInUser = Auth::user();
