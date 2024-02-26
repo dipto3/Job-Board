@@ -68,4 +68,11 @@ class PackageController extends Controller
 
         return view(self::moduleDirectory . 'edit', $data);
     }
+
+    public function update(Request $request, $id)
+    {
+        $package = $this->packageService->updatePackage($request, $id);
+        toastr()->addInfo('', 'Package Updated Successfully.');
+        return redirect()->route('package.index');
+    }
 }

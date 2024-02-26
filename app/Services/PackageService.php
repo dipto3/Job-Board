@@ -29,4 +29,13 @@ class PackageService
     {
         return Package::findOrFail($id);
     }
+
+    public function updatePackage($request, $id)
+    {
+        return Package::where('id', $id)->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'limit' => $request->limit,
+        ]);
+    }
 }
