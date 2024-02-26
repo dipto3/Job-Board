@@ -42,7 +42,7 @@
                                             <div class="col-12">
                                                 <label for="emailaddress">Company Name</label>
                                                 <input class="form-control" type="text" name="name" id="name"
-                                                    placeholder="john">
+                                                    placeholder="john" value="{{ old('name') }}">
                                                 @error('name')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror
@@ -50,7 +50,8 @@
                                             <div class="col-12">
                                                 <label for="emailaddress">Email</label>
                                                 <input class="form-control" type="email" name="email"
-                                                    id="emailaddress" placeholder="john@deo.com">
+                                                    id="emailaddress" placeholder="john@deo.com"
+                                                    value="{{ old('email') }}">
                                                 @error('email')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror
@@ -58,7 +59,8 @@
                                             <div class="col-12">
                                                 <label for="emailaddress">Phone Number</label>
                                                 <input class="form-control" type="text" name="contract_number"
-                                                    id="contract_number" placeholder="+880">
+                                                    id="contract_number" placeholder="+880"
+                                                    value="{{ old('contract_number') }}">
                                                 @error('contract_number')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror
@@ -66,7 +68,7 @@
                                             <div class="col-12">
                                                 <label for="emailaddress">Website/LinkDin page </label>
                                                 <input class="form-control" type="text" name="webpage" id="webpage"
-                                                    placeholder="www.johndeo.com">
+                                                    placeholder="www.johndeo.com" value="{{ old('webpage') }}">
                                                 @error('webpage')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror
@@ -80,7 +82,8 @@
                                                         password?</small></a>
                                                 <label for="password">Password</label>
                                                 <input class="form-control" type="password" name="password"
-                                                    id="password" placeholder="Enter your password">
+                                                    id="password" placeholder="Enter your password"
+                                                    value="{{ old('password') }}">
                                                 @error('password')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror
