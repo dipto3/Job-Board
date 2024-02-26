@@ -22,10 +22,9 @@ class JobService
 
     public function storeJob($request)
     {
+
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('create-job')) {
-            abort(403, 'Unauthorized Access!');
-        }
+        
 
         $jobLimit = $loggedInUser->companyInfo->package->limit;
 
@@ -37,7 +36,7 @@ class JobService
 
         $job = Job::create([
             'title' => $request->title,
-            'category_id' => $request->category,
+            'category_id' => $request->category_id,
             'uuid' => Str::uuid()->toString(),
             'user_id' => $loggedInUser->id,
             'tags' => $tags,

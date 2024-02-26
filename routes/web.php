@@ -78,7 +78,6 @@ Route::post('/package-cart', [CartController::class, 'store'])->name('package.ca
 
 //Company auth
 
-
 Route::post('/subscriber', [SubscriberController::class, 'store'])->name('subscriber.store');
 //Jobs
 Route::get('/job-create', [JobController::class, 'create'])->name('job.create')->middleware('can:create-job');

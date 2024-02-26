@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\JobFormRequest;
 use App\Services\JobService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,7 @@ class JobController extends Controller
 
     public function create()
     {
+
         $loggedInUser = Auth::user();
         if (is_null($loggedInUser) || !$loggedInUser->can('create-job')) {
             abort(403, 'Unauthorized Access!');
@@ -43,8 +45,9 @@ class JobController extends Controller
         return view(self::moduleDirectory . 'create', $data);
     }
 
-    public function store(Request $request)
+    public function store(JobFormRequest $request)
     {
+        $request->validated();
         $job = $this->jobService->storeJob($request);
         if ($job) {
             toastr()->addInfo('', 'Job Created Successfully.');
