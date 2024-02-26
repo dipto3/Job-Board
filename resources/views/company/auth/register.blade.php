@@ -41,23 +41,35 @@
                                         <div class="form-group row">
                                             <div class="col-12">
                                                 <label for="emailaddress">Company Name</label>
-                                                <input class="form-control" type="name" name="name" id="name"
-                                                    required="" placeholder="john">
+                                                <input class="form-control" type="text" name="name" id="name"
+                                                    placeholder="john">
+                                                @error('name')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                             <div class="col-12">
-                                                <label for="emailaddress">Compnay Email address</label>
+                                                <label for="emailaddress">Email</label>
                                                 <input class="form-control" type="email" name="email"
-                                                    id="emailaddress" required="" placeholder="john@deo.com">
+                                                    id="emailaddress" placeholder="john@deo.com">
+                                                @error('email')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                             <div class="col-12">
-                                                <label for="emailaddress">Compnay Contract Number</label>
-                                                <input class="form-control" type="number" name="contract_number"
-                                                    id="contract_number" required="" placeholder="+880">
+                                                <label for="emailaddress">Phone Number</label>
+                                                <input class="form-control" type="text" name="contract_number"
+                                                    id="contract_number" placeholder="+880">
+                                                @error('contract_number')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                             <div class="col-12">
                                                 <label for="emailaddress">Website/LinkDin page </label>
-                                                <input class="form-control" type="name" name="webpage" id="webpage"
-                                                    required="" placeholder="www.johndeo.com">
+                                                <input class="form-control" type="text" name="webpage" id="webpage"
+                                                    placeholder="www.johndeo.com">
+                                                @error('webpage')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -68,7 +80,10 @@
                                                         password?</small></a>
                                                 <label for="password">Password</label>
                                                 <input class="form-control" type="password" name="password"
-                                                    required="" id="password" placeholder="Enter your password">
+                                                    id="password" placeholder="Enter your password">
+                                                @error('password')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
 
