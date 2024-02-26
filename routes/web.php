@@ -97,11 +97,10 @@ Route::get('/role-details/{id}', [RoleController::class, 'details'])->name('role
 Route::get('/role-edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
 Route::put('/role-update/{id}', [RoleController::class, 'update'])->name('role.update');
 Route::delete('/role-destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
-
-
-
-
-
+//package
+Route::get('/package-index', [PackageController::class, 'index'])->name('package.index');
+Route::get('/package-create', [PackageController::class, 'create'])->name('package.create');
+Route::post('/package-store', [PackageController::class, 'store'])->name('package.store');
 // SSLCOMMERZ Start
 Route::get('/checkout', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('checkout');
 // Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);

@@ -10,12 +10,12 @@ class Package extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'limit'
+        'limit',
+        'status'
     ];
 
     public function users()
     {
         return $this->hasMany(User::class);
     }
-
 }

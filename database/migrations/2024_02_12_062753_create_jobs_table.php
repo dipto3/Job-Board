@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('link');
             $table->text('description');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

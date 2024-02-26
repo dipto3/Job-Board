@@ -27,7 +27,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{ route('role.index') }}">Roles</a></li>
+                            <li><a href="{{ route('role.index') }}">List</a></li>
 
                         </ul>
                     </li>
@@ -55,23 +55,36 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{ route('job.index') }}">Jobs</a></li>
+                            <li><a href="{{ route('job.index') }}">List</a></li>
 
                         </ul>
                     </li>
                 @endcan
                 @can('subscriber')
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-file-plus"></i>
-                        <span> Subscriber </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{ route('subscriber.list') }}">List</a></li>
-                    </ul>
-                </li>
-                 @endcan
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="fe-file-plus"></i>
+                            <span> Subscriber </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{ route('subscriber.list') }}">List</a></li>
+                        </ul>
+                    </li>
+                @endcan
+
+                @can('package')
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="fe-file-plus"></i>
+                            <span> Package </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{ route('package.index') }}">List</a></li>
+                        </ul>
+                    </li>
+                @endcan
             </ul>
 
 
