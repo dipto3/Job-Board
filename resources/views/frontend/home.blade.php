@@ -19,31 +19,17 @@
 
                 <!-- Job Search Form Start -->
                 <div class="job-search-form">
-                    <form action="#">
+                    <form action="#" id="jobSearchForm">
                         <div class="row mb-n4">
-
+                            <h4 class="title">Search Here</h4>
                             <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
-                                <input type="text" placeholder="e.g. web design">
+                                <input type="text" name="search" id="search"
+                                    placeholder="web development,10000-20000,Dhaka">
                             </div>
 
-                            <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
-                                <input type="text" placeholder="Location">
-                            </div>
-
-                            <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
-                                <select>
-                                    <option value="1">Any category</option>
-                                    <option value="2">Web Designer</option>
-                                    <option value="3">Web Developer</option>
-                                    <option value="4">Graphic Designer</option>
-                                    <option value="5">App Developer</option>
-                                    <option value="6">UI &amp; UX Expert</option>
-                                </select>
-                            </div>
-
-                            <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
+                            {{-- <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
                                 <button class="btn btn-primary">Search</button>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </form>
@@ -54,7 +40,7 @@
         </div>
     </div>
     <!-- Job Search Section End -->
-
+    <div id="jobs"></div>
     <!-- Recent Jobs Start -->
     <div class="section section-padding">
         <div class="container">
@@ -181,8 +167,7 @@
                 <!-- Company List Start -->
                 <div class="col">
                     <a href="company-single.html" class="feature-company">
-                        <span class="company-logo"><img src="assets/images/companies/company-7.png"
-                                alt="company-1"></span>
+                        <span class="company-logo"><img src="assets/images/companies/company-7.png" alt="company-1"></span>
                         <h6 class="title">Buzco</h6>
                         <span class="open-job">3 open positions</span>
                     </a>
@@ -361,3 +346,29 @@
     </div>
     <!-- Blog Section End -->
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#search').keyup(function() {
+            var search = $('#search').val();
+            if (search == "") {
+                $("#jobs").html("");
+                $('#jobs').hide();
+            } else {
+                $.get("{{ route('search.job') }}", {
+                    search: search
+                }, function(data) {
+                    $('#jobs').empty().html(data);
+                    $('#jobs').show();
+                })
+            }
+        });
+    });
+</script>

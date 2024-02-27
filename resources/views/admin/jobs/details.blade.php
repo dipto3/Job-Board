@@ -69,7 +69,7 @@
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label" for="example-number">salary</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" id="example-number" type="number"
+                                                    <input class="form-control" id="example-number" type="text"
                                                         name="salary" value="{{ $job->salary }}" readonly>
                                                 </div>
                                             </div>

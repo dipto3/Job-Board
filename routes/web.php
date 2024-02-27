@@ -45,7 +45,7 @@ Route::get('/', function () {
 //Frontend Routes...
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
-
+Route::get('/search', [HomeController::class, 'search'])->name('search.job');
 Route::get('/job/{uuid}', [FrontendJobController::class, 'jobDetails'])->name('job.description');
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 //Admin auth

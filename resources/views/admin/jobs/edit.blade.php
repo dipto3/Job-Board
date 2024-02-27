@@ -47,7 +47,8 @@
                                                 <label class="col-md-2 col-form-label">Category</label>
                                                 <div class="col-md-10">
                                                     <select class="form-control" name="category">
-                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        <option value="{{ $job->category_id }}">{{ $job->category->name }}
+                                                        </option>
                                                         @foreach ($categories as $category)
                                                             <option value="{{ $category->id }}">{{ $category->name }}
                                                             </option>
@@ -78,7 +79,7 @@
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label" for="example-number">salary</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" id="example-number" type="number"
+                                                    <input class="form-control" id="example-number" type=""
                                                         name="salary" value="{{ $job->salary }}">
                                                 </div>
                                             </div>

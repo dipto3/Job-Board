@@ -62,6 +62,7 @@ class JobController extends Controller
     {
         $data = [
             'job' => $this->jobService->findJobInfo($id),
+            'categories' => $this->jobService->findCategory(),
         ];
 
         return view(self::moduleDirectory . 'details', $data);
