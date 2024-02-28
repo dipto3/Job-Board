@@ -36,4 +36,14 @@ class Job extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function jobView()
+    {
+        return $this->hasMany(JobView::class);
+    }
+
+    public function jobApply()
+    {
+        return $this->hasMany(JobApply::class);
+    }
 }

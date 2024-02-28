@@ -80,6 +80,7 @@ class JobService
             //Specific job's view count
             foreach ($jobs as $job) {
                 $job->totalViews = JobView::where('job_id', $job->id)->count();
+                $job->totalClick = JobApply::where('job_id', $job->id)->count();
             }
             return $jobs;
         }

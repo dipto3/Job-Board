@@ -58,6 +58,25 @@
                                             </div>
 
                                             <div class="form-group row">
+                                                <label class="col-md-2 col-form-label" for="example-placeholder">Total
+                                                    view</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" name="tags[]" id="example-placeholder"
+                                                        class="form-control" value="{{ $job->jobView->count() }}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label" for="example-placeholder">
+                                                    
+                                                    Apply Button's total Click</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" name="tags[]" id="example-placeholder"
+                                                        class="form-control" value="{{ $job->jobApply->count() }}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
                                                 <label class="col-md-2 col-form-label"
                                                     for="example-placeholder">Location</label>
                                                 <div class="col-md-10">

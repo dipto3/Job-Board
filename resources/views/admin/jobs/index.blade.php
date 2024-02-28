@@ -57,6 +57,7 @@
                                         <th>Company Name</th>
                                         <th>Published On</th>
                                         <th>Total views</th>
+                                        <th>Total Click</th>
                                         <th>Deadline</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -72,6 +73,7 @@
                                             <td>{{ $job->user->name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</td>
                                             <td>{{ $job->totalViews }}</td>
+                                            <td>{{ $job->totalClick }}</td>
                                             <td>{{ \Carbon\Carbon::parse($job->deadline)->format('d F, Y (l)') }}</td>
                                             <td>
                                                 @if (now()->startOfDay() > $job->deadline)

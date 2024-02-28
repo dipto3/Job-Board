@@ -11,6 +11,5 @@ class JobView extends Model
     protected $fillable = [
         'job_id',
         'ipAddress'
-
     ];
 }
