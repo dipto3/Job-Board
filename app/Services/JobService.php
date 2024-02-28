@@ -147,5 +147,21 @@ class JobService
         return $job;
     }
 
-    
+    public function clcik($id, $request)
+    {
+        $loggedInUser = Auth::user()->id;
+        $job = Job::find($id);
+        $ipAddress = $request->ip();
+        $existIp = JobApply::where('job_id', $job->id)->where('user_id', $loggedInUser)->where('ipAddress', $ipAddress)->first();
+        //check for store unique ip address
+        if (!$existIp) {
+            JobApply::create([
+                'job_id' => $id,
+                'ipAddress' => $ipAddress,
+                'user_id' => $loggedInUser
+            ]);
+        }
+
+        return $job;
+    }
 }
