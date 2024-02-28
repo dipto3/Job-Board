@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Mail\JobPost;
 use App\Models\Category;
 use App\Models\Job;
+use App\Models\JobApply;
 use App\Models\JobView;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class JobService
     {
 
         $loggedInUser = Auth::user();
-        
+
 
         $jobLimit = $loggedInUser->companyInfo->package->limit;
 
@@ -144,4 +145,6 @@ class JobService
         }
         return $job;
     }
+
+    
 }

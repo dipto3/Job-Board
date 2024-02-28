@@ -28,14 +28,7 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('search');
-
-        // Perform your search logic based on the query parameter
-        $jobs = Job::where('tags', 'like', "$query%")
-            ->orWhere('location', 'like', "$query%")
-            ->orWhere('salary', 'like', "$query%")
-            ->get();
-
+        $this->homeService->searchJob($request);
         return view('frontend.search', compact('jobs'));
     }
 }

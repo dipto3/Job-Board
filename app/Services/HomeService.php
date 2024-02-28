@@ -14,4 +14,14 @@ class HomeService
         // dd(now()->startOfDay());
         return compact('activeJobs');
     }
+
+    public function searchJob($request)
+    {
+        $query = $request->input('search');
+
+        $jobs = Job::where('tags', 'like', "$query%")
+            ->orWhere('location', 'like', "$query%")
+            ->orWhere('salary', 'like', "$query%")
+            ->get();
+    }
 }

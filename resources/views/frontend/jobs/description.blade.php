@@ -6,14 +6,14 @@
                 <h3 class="title">{{ $job->title }}</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active"><a href="{{ route('home') }}">Home</a></li>
-                  
+
                 </ol>
             </div>
         </div>
     </div>
 
-       <!-- Recent Jobs Start -->
-       <div class="section section-padding">
+    <!-- Recent Jobs Start -->
+    <div class="section section-padding">
         <div class="container">
             <div class="row mb-n5">
 
@@ -31,14 +31,15 @@
                             <div class="content col">
                                 <h5 class="title">{{ $job->title }}</h5>
                                 <ul class="meta">
-                                    <li><strong class="text-primary"><a href="#">{{ $job->user->name }}</a></strong></li>
+                                    <li><strong class="text-primary"><a href="#">{{ $job->user->name }}</a></strong>
+                                    </li>
                                     <li><i class="fa fa-map-marker"></i> {{ $job->location }}</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="job-details-body">
                             <h6 class="mb-3">Job Description</h6>
-                          <p>{!! $job->description !!}</p>
+                            <p>{!! $job->description !!}</p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +56,8 @@
                                         <a href="#" class="d-block btn btn-outline-secondary"><i class="fa fa-heart-o me-1"></i> Save Job</a>
                                     </div> --}}
                                     <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                        <a href="#" class="d-block btn btn-primary">Apply Now</a>
+                                        <a href="{{ route('click', $job->id) }}" class="d-block btn btn-primary">Apply
+                                            Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -67,17 +69,19 @@
                             <div class="inner">
                                 <h6 class="title">Job Overview</h6>
                                 <ul class="job-overview list-unstyled">
-                                    <li><strong>Published on:</strong> {{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</li>
+                                    <li><strong>Published on:</strong>
+                                        {{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</li>
                                     <li><strong>Employment Status:</strong> {{ $job->employment_type }}</li>
                                     <li><strong>Experience:</strong> {{ $job->experience }}</li>
                                     <li><strong>Job Location:</strong> {{ $job->location }}</li>
                                     <li><strong>Salary:</strong>{{ $job->salary }}</li>
                                     <li><strong>Gender:</strong>{{ $job->gender }}</li>
-                                    <li><strong>Application Deadline:</strong> {{ \Carbon\Carbon::parse($job->deadline)->format('d F, Y (l)') }}</li>
+                                    <li><strong>Application Deadline:</strong>
+                                        {{ \Carbon\Carbon::parse($job->deadline)->format('d F, Y (l)') }}</li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- Sidebar (Job Overview) End --> 
+                        <!-- Sidebar (Job Overview) End -->
                     </div>
                 </div>
                 <!-- Job Sidebar Wrap End -->

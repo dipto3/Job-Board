@@ -31,22 +31,16 @@ use App\Http\Controllers\SslCommerzPaymentController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/jobs/{uuid}', [FrontendJobController::class, 'jobDetails'])->name('job.description');
+    Route::get('/job-click/{id}', [FrontendJobController::class, 'clcik'])->name('click');
+});
 
 //Frontend Routes...
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 Route::get('/search', [HomeController::class, 'search'])->name('search.job');
-Route::get('/job/{uuid}', [FrontendJobController::class, 'jobDetails'])->name('job.description');
+
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 //Admin auth
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
@@ -59,7 +53,6 @@ Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name(
 Route::post('/company/login', [CompanyLoginController::class, 'loginpost'])->name('company.login');
 
 //Admin routes...
-
 
 //Admin manage users
 Route::get('/admin/show-user/company', [UserManageController::class, 'index'])->name('show.user.company');
