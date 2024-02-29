@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -68,7 +67,7 @@ class RoleAndPermissionseeder extends Seeder
             'package', 'create-package', 'index-package', 'edit-package', 'delete-package',
             'category', 'create-category', 'index-category', 'edit-category', 'delete-category',
             'job', 'create-job', 'index-job', 'details-job', 'edit-job', 'delete-job',
-            'subscriber', 'index-subscriber', 'delete-subscriber'
+            'subscriber', 'index-subscriber', 'delete-subscriber',
         ];
 
         foreach ($permissions as $permissionName) {
@@ -82,11 +81,11 @@ class RoleAndPermissionseeder extends Seeder
             'package', 'create-package', 'index-package', 'edit-package', 'delete-package',
             'category', 'create-category', 'index-category', 'edit-category', 'delete-category',
             'job', 'create-job', 'index-job', 'details-job', 'edit-job', 'delete-job',
-            'subscriber', 'index-subscriber', 'delete-subscriber'
+            'subscriber', 'index-subscriber', 'delete-subscriber',
         ]);
         $companyRole->syncPermissions([
 
-            'job', 'create-job', 'index-job', 'details-job', 'edit-job', 'delete-job'
+            'job', 'create-job', 'index-job', 'details-job', 'edit-job', 'delete-job',
 
         ]);
     }

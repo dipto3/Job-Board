@@ -22,27 +22,28 @@ class JobController extends Controller
     public function index()
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('index-job')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('index-job')) {
             abort(403, 'Unauthorized Access!');
         }
         $data = [
             'jobs' => $this->jobService->getAllJob(),
         ];
 
-        return view(self::moduleDirectory . 'index', $data);
+        return view(self::moduleDirectory.'index', $data);
     }
 
     public function create()
     {
 
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('create-job')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('create-job')) {
             abort(403, 'Unauthorized Access!');
         }
         $data = [
             'categories' => $this->jobService->findCategory(),
         ];
-        return view(self::moduleDirectory . 'create', $data);
+
+        return view(self::moduleDirectory.'create', $data);
     }
 
     public function store(JobFormRequest $request)
@@ -65,13 +66,13 @@ class JobController extends Controller
             'categories' => $this->jobService->findCategory(),
         ];
 
-        return view(self::moduleDirectory . 'details', $data);
+        return view(self::moduleDirectory.'details', $data);
     }
 
     public function edit($id)
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('edit-job')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('edit-job')) {
             abort(403, 'Unauthorized Access!');
         }
         $data = [
@@ -79,7 +80,7 @@ class JobController extends Controller
             'categories' => $this->jobService->findCategory(),
         ];
 
-        return view(self::moduleDirectory . 'edit', $data);
+        return view(self::moduleDirectory.'edit', $data);
     }
 
     public function update(Request $request, $id)
@@ -104,7 +105,7 @@ class JobController extends Controller
     public function destroy($id)
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('delete-job')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('delete-job')) {
             abort(403, 'Unauthorized Access!');
         }
         $job = $this->jobService->destroyJobInfo($id);

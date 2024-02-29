@@ -10,7 +10,7 @@
                   </div>
                   <div class="salary-type col-auto order-sm-3">
                       <span class="salary-range">{{ $job->salary }}</span>
-                      <span class="badge bg-success">{{ $job->employment_type }}</span>
+                      <span class="badge bg-success" style="text-transform: uppercase;">{{ $job->employment_type }}</span>
                   </div>
                   <div class="content col">
                       <h6 class="title">{{ $job->title }}</h6>

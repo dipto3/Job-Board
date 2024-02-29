@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class JobCategorySeeder extends Seeder
@@ -40,12 +39,12 @@ class JobCategorySeeder extends Seeder
             'Driving/Motor Technician',
             'Security/Support Service',
             'Law/Legal',
-            'Company Secretary/Regulatory Affairs'
+            'Company Secretary/Regulatory Affairs',
         ];
 
         foreach ($categories as $category) {
             Category::create([
-                'name' => $category
+                'name' => $category,
             ]);
         }
     }

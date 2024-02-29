@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Cart;
-
 use Illuminate\Support\Facades\Auth;
 
 class CartService
@@ -28,7 +27,7 @@ class CartService
             //create new if no existCart
             return Cart::create([
                 'user_id' => Auth::user()->id,
-                'package_id' => $package_id
+                'package_id' => $package_id,
             ]);
         }
     }

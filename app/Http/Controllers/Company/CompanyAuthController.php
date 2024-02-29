@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Company;
 
-use App\Models\User;
-use App\Models\CompanyInfo;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRegistrationFormRequest;
-use Illuminate\Support\Facades\Auth;
+use App\Models\CompanyInfo;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -33,7 +30,7 @@ class CompanyAuthController extends Controller
 
         CompanyInfo::create([
             'user_id' => $user->id,
-            'contract_number'  => $request->contract_number,
+            'contract_number' => $request->contract_number,
             'webpage' => $request->webpage,
             'approval' => 'pending',
             'package_id' => 1,

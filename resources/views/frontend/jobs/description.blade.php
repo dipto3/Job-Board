@@ -22,12 +22,14 @@
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <a href="#"><img src="assets/images/companies/company-1.png" alt="Company Logo"></a>
+                                <a href="#"><img src="assets/images/companies/company-1.png" alt=""></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">{{ $job->salary }} </span>
-                                <span class="badge bg-success">{{ $job->employment_type }}</span>
+                                <span class="badge bg-success"
+                                    style="text-transform: uppercase;">{{ $job->employment_type }}</span>
                             </div>
+
                             <div class="content col">
                                 <h5 class="title">{{ $job->title }}</h5>
                                 <ul class="meta">
@@ -71,7 +73,8 @@
                                 <ul class="job-overview list-unstyled">
                                     <li><strong>Published on:</strong>
                                         {{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}</li>
-                                    <li><strong>Employment Status:</strong> {{ $job->employment_type }}</li>
+                                    <li style="text-transform: uppercase;"><strong>Employment Status:</strong>
+                                        {{ $job->employment_type }}</li>
                                     <li><strong>Experience:</strong> {{ $job->experience }}</li>
                                     <li><strong>Job Location:</strong> {{ $job->location }}</li>
                                     <li><strong>Salary:</strong>{{ $job->salary }}</li>

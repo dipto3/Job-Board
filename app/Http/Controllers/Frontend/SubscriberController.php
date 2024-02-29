@@ -14,6 +14,7 @@ class SubscriberController extends Controller
     {
         $this->subscribersService = $subscribersService;
     }
+
     public function store(Request $request)
     {
         $subscriber = $this->subscribersService->addSubscriber($request);

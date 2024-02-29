@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\SubscribersService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SubscribersController extends Controller
 {
     const moduleDirectory = 'admin.subscriber.';
+
     protected $subscribersService;
 
     public function __construct(SubscribersService $subscribersService)
@@ -20,13 +20,13 @@ class SubscribersController extends Controller
     public function index()
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('index-subscriber')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('index-subscriber')) {
             abort(403, 'Unauthorized Access!');
         }
         $data = [
             'subscribers' => $this->subscribersService->allSubscriber(),
         ];
 
-        return view(self::moduleDirectory . 'index', $data);
+        return view(self::moduleDirectory.'index', $data);
     }
 }

@@ -11,6 +11,7 @@ class HomeService
         $activeJobs = Job::where('status', 1)
             ->where('deadline', '>=', now()->startOfDay())
             ->get();
+
         // dd(now()->startOfDay());
         return compact('activeJobs');
     }

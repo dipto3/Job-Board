@@ -14,7 +14,7 @@ class CompanyInfo extends Model
         'package_id',
         'contract_number',
         'webpage',
-        'approval'
+        'approval',
     ];
 
     public function package()

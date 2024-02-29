@@ -3,12 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
-use App\Models\JobApply;
-use App\Models\JobView;
 use App\Services\JobService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -18,18 +14,20 @@ class JobController extends Controller
     {
         $this->jobService = $jobService;
     }
+
     public function jobDetails($uuid, Request $request)
     {
         $data = [
-            'job' => $this->jobService->jobDetailsPage($uuid, $request)
+            'job' => $this->jobService->jobDetailsPage($uuid, $request),
         ];
+
         return view('frontend.jobs.description', $data);
     }
-
 
     public function clcik($id, Request $request)
     {
         $job = $this->jobService->clcik($id, $request);
+
         return redirect()->to($job->link);
     }
 }

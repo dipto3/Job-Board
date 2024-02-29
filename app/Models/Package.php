@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Package extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'price',
         'limit',
-        'status'
+        'status',
     ];
 
     public function users()

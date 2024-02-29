@@ -7,8 +7,6 @@ use App\Http\Requests\RoleFormRequest;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -24,26 +22,27 @@ class RoleController extends Controller
     public function index()
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('index-role')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('index-role')) {
             abort(403, 'Unauthorized Access!');
         }
         $data = [
             'roles' => $this->roleService->getAllRole(),
         ];
 
-        return view(self::moduleDirectory . 'index', $data);
+        return view(self::moduleDirectory.'index', $data);
     }
 
     public function create()
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('create-role')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('create-role')) {
             abort(403, 'Unauthorized Access!');
         }
         $data = [
             'permissions' => $this->roleService->allPermission(),
         ];
-        return view(self::moduleDirectory . 'create', $data);
+
+        return view(self::moduleDirectory.'create', $data);
     }
 
     public function store(RoleFormRequest $request)
@@ -51,26 +50,28 @@ class RoleController extends Controller
         $request->validated();
         $role = $this->roleService->storeRole($request);
         toastr()->addInfo('', 'Role Created Successfully.');
+
         return redirect()->route('role.index');
     }
 
     public function edit($id)
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('edit-role')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('edit-role')) {
             abort(403, 'Unauthorized Access!');
         }
         $data = [
             'role' => $this->roleService->roleInfo($id),
-            'permissions' => $this->roleService->allPermission()
+            'permissions' => $this->roleService->allPermission(),
         ];
 
-        return view(self::moduleDirectory . 'edit', $data);
+        return view(self::moduleDirectory.'edit', $data);
     }
 
     public function update($id, Request $request)
     {
         $role = $this->roleService->updateRole($id, $request);
+
         return redirect()->route('role.index');
         toastr()->addInfo('', 'Role Updates Successfully.');
     }
@@ -78,18 +79,21 @@ class RoleController extends Controller
     public function destroy($id)
     {
         $loggedInUser = Auth::user();
-        if (is_null($loggedInUser) || !$loggedInUser->can('delete-role')) {
+        if (is_null($loggedInUser) || ! $loggedInUser->can('delete-role')) {
             abort(403, 'Unauthorized Access!');
         }
         $role = $this->roleService->destroyRoleInfo($id);
         toastr()->addInfo('', 'Role Removed Successfully.');
+
         return redirect()->route('role.index');
     }
+
     public function details($id)
     {
         $data = [
             'roles' => $this->roleService->rolePermission($id),
         ];
-        return view(self::moduleDirectory . 'details', $data);
+
+        return view(self::moduleDirectory.'details', $data);
     }
 }

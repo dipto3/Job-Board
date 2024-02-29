@@ -21,9 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer("frontend.partials.footer", function ($view) {
+        View::composer('frontend.partials.footer', function ($view) {
             $categories = Category::where('status', 1)->get();
-            $view->with("categories", $categories);
+            $view->with('categories', $categories);
         });
     }
 }

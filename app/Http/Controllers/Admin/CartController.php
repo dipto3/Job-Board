@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Cart;
 use App\Services\CartService;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {

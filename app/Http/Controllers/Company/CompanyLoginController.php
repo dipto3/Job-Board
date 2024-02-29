@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Company;
 
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 
 class CompanyLoginController extends Controller
 {
@@ -19,6 +17,7 @@ class CompanyLoginController extends Controller
     {
         return view('company.not-approved');
     }
+
     public function loginpost(Request $request)
     {
         $credetials = $request->validate([
@@ -34,7 +33,7 @@ class CompanyLoginController extends Controller
             if ($user->companyInfo->approval === 'pending') {
                 return redirect()->route('company.pending');
             } else {
-                 //if account is approved
+                //if account is approved
                 return redirect()->route('dashboard')->with('success', 'Login Success');
             }
         }

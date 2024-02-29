@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class JobService
 {
@@ -25,7 +24,6 @@ class JobService
     {
 
         $loggedInUser = Auth::user();
-
 
         $jobLimit = $loggedInUser->companyInfo->package->limit;
 
@@ -82,6 +80,7 @@ class JobService
                 $job->totalViews = JobView::where('job_id', $job->id)->count();
                 $job->totalClick = JobApply::where('job_id', $job->id)->count();
             }
+
             return $jobs;
         }
     }
@@ -138,12 +137,13 @@ class JobService
         $ipAddress = $request->ip();
         $existIp = JobView::where('job_id', $job->id)->where('ipAddress', $ipAddress)->first();
         //check for store unique ip address
-        if (!$existIp) {
+        if (! $existIp) {
             JobView::create([
                 'job_id' => $job->id,
-                'ipAddress' => $ipAddress
+                'ipAddress' => $ipAddress,
             ]);
         }
+
         return $job;
     }
 
@@ -154,11 +154,11 @@ class JobService
         $ipAddress = $request->ip();
         $existIp = JobApply::where('job_id', $job->id)->where('user_id', $loggedInUser)->where('ipAddress', $ipAddress)->first();
         //check for store unique ip address
-        if (!$existIp) {
+        if (! $existIp) {
             JobApply::create([
                 'job_id' => $id,
                 'ipAddress' => $ipAddress,
-                'user_id' => $loggedInUser
+                'user_id' => $loggedInUser,
             ]);
         }
 

@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use PHPUnit\Framework\MockObject\Stub\ReturnStub;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -12,6 +11,7 @@ class RoleService
     {
         return Permission::all();
     }
+
     public function getAllRole()
     {
         return Role::all();
@@ -25,7 +25,7 @@ class RoleService
         ]);
         $permissions = $request->input('permissions');
 
-        if (!empty($permissions)) {
+        if (! empty($permissions)) {
             $role->syncPermissions($permissions);
         }
 
@@ -34,18 +34,19 @@ class RoleService
 
     public function updateRole($id, $request)
     {
-        $role =  Role::findOrFail($id);
+        $role = Role::findOrFail($id);
         $role->update([
             'name' => $request->name,
         ]);
         $permissions = $request->input('permissions');
 
-        if (!empty($permissions)) {
+        if (! empty($permissions)) {
             $role->syncPermissions($permissions);
         }
 
         return $role;
     }
+
     public function roleInfo($id)
     {
         return Role::findOrFail($id);
@@ -55,6 +56,7 @@ class RoleService
     {
         return Role::findOrFail($id)->delete();
     }
+
     public function rolePermission($id)
     {
         return Role::with('permissions')->findOrFail($id);

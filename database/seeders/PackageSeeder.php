@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Package;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PackageSeeder extends Seeder
@@ -15,7 +14,7 @@ class PackageSeeder extends Seeder
     {
         Package::create([
             'name' => 'Free',
-            'limit' => 3, 
+            'limit' => 3,
             'price' => 0,
         ]);
 
