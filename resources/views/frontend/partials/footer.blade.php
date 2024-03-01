@@ -116,12 +116,17 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"
     integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#subs').submit(function(e) {
+
             e.preventDefault();
             $.ajax({
+
                 type: 'POST',
                 url: '{{ route('subscriber.store') }}',
                 data: {
@@ -129,14 +134,16 @@
                     email: $('input[name=email]').val(),
                     _token: "{{ csrf_token() }}",
                 },
-                dataType: 'json',
+
                 success: function(response) {
-                    alert(response.message);
+                    toastr.success('Subscriber Added');
                     $('#subs')[0].reset();
                     $('.footer-widget-newsletter').load(location.href +
                         ' .footer-widget-newsletter');
                 }
+
             });
+
         });
     });
 </script>

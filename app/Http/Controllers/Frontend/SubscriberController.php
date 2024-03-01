@@ -18,10 +18,6 @@ class SubscriberController extends Controller
     public function store(Request $request)
     {
         $subscriber = $this->subscribersService->addSubscriber($request);
-        if ($subscriber) {
-            toastr()->addInfo('', 'Subscriber Created Successfully.');
-        }
-
         return redirect()->back();
     }
 }

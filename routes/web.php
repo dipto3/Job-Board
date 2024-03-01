@@ -38,7 +38,7 @@ Route::post('/subscriber', [SubscriberController::class, 'store'])->name('subscr
 Route::get('/admin/login', [AdminAuthController::class, 'loginPage'])->name('login.page');
 Route::post('/admin/login-check', [AdminAuthController::class, 'login'])->name('admin.login.check');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
-Route::get('/company/register', [CompanyAuthController::class, 'registerPage'])->name('company.register.page');
+Route::get('/company/register-page', [CompanyAuthController::class, 'registerPage'])->name('company.register.page');
 Route::post('/company/register', [CompanyAuthController::class, 'register'])->name('company.register');
 Route::get('/company/login-page', [CompanyLoginController::class, 'loginpage'])->name('company.login.page');
 Route::get('/not-approve', [CompanyLoginController::class, 'notApprove'])->name('company.pending');
@@ -94,14 +94,15 @@ Route::middleware('admin')->group(function () {
     Route::get('/checkout', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('checkout');
     // Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
-    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
-    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
-
-    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
-
-    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 });
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 
 require __DIR__ . '/auth.php';

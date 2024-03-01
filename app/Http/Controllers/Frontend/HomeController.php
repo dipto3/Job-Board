@@ -18,7 +18,6 @@ class HomeController extends Controller
     public function home()
     {
         $data = $this->homeService->homeFeed();
-
         return view('frontend.home', $data);
     }
 

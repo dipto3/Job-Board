@@ -8,6 +8,7 @@ class SubscribersService
 {
     public function addSubscriber($request)
     {
+        // dd($request);
         return Subscriber::create([
             'category_id' => $request->category_id,
             'email' => $request->email,
