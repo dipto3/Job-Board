@@ -66,11 +66,11 @@
                             </div>
                             <!-- end row -->
                         </div> <!-- end card-box -->
-                    </div><!-- end col -->
+                    </div>
                 </div>
                 <!-- end row -->
-            </div> <!-- end container-fluid -->
-        </div> <!-- end content -->
+            </div> 
+        </div>
     </div>
 @endsection
 
