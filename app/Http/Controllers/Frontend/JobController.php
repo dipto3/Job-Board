@@ -20,7 +20,6 @@ class JobController extends Controller
         $data = [
             'job' => $this->jobService->jobDetailsPage($uuid, $request),
         ];
-
         return view('frontend.jobs.description', $data);
     }
 
