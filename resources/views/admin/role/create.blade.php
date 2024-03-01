@@ -43,7 +43,8 @@
                                         <div class="form-group">
                                             <label for="name">Permissions</label>
                                             <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="checkPermissionAll">
+                                                <input type="checkbox" class="form-check-input" id="checkPermissionAll"
+                                                    value="1">
                                                 <label class="form-check-label" for="checkPermissionAll">All</label>
                                             </div>
                                             <hr>
@@ -74,11 +75,28 @@
 @endsection
 
 @push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#checkPermissionAll").click(function() {
-                $('input[type=checkbox]').prop('checked', $(this).prop('checked'));
-            });
+        $("#checkPermissionAll").click(function() {
+           
+            if ($(this).is(':checked')) {
+                // check all the checkbox
+                $('input[type=checkbox]').prop('checked', true);
+            } else {
+                // un check all the checkbox
+                $('input[type=checkbox]').prop('checked', false);
+            }
         });
+
+
+        function checkPermissionByGroup(className, checkThis) {
+            const groupIdName = $("#" + checkThis.id);
+            const classCheckBox = $('.' + className + ' input');
+            if (groupIdName.is(':checked')) {
+                classCheckBox.prop('checked', true);
+            } else {
+                classCheckBox.prop('checked', false);
+            }
+        }
     </script>
 @endpush
