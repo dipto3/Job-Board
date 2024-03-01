@@ -28,8 +28,8 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $this->homeService->searchJob($request);
+        $data = $this->homeService->searchJob($request);
 
-        return view('frontend.search', compact('jobs'));
+        return view('frontend.search', $data);
     }
 }

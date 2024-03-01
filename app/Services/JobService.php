@@ -26,9 +26,19 @@ class JobService
         $loggedInUser = Auth::user();
 
         $jobLimit = $loggedInUser->companyInfo->package->limit;
+        $packageID = $loggedInUser->companyInfo->package->id;
+        // dd($packageID);
 
+        $packageJobsCount = Job::where('jobs.user_id', $loggedInUser->id)
+            ->join('company_infos', 'jobs.user_id', '=', 'company_infos.user_id')
+            ->where('company_infos.package_id', $loggedInUser->companyInfo->package->id)
+            ->count();
+        // dd($packageJobsCount);
         // Check if user's job post limit over
-        if ($loggedInUser->jobs->count() >= $jobLimit) {
+        // if ($loggedInUser->jobs->count() >= $jobLimit) {
+        //     return false; // Job posting limit over
+        // }
+        if ($packageJobsCount >= $jobLimit) {
             return false; // Job posting limit over
         }
         $tags = implode(',', $request->tags);
@@ -137,7 +147,7 @@ class JobService
         $ipAddress = $request->ip();
         $existIp = JobView::where('job_id', $job->id)->where('ipAddress', $ipAddress)->first();
         //check for store unique ip address
-        if (! $existIp) {
+        if (!$existIp) {
             JobView::create([
                 'job_id' => $job->id,
                 'ipAddress' => $ipAddress,
@@ -154,7 +164,7 @@ class JobService
         $ipAddress = $request->ip();
         $existIp = JobApply::where('job_id', $job->id)->where('user_id', $loggedInUser)->where('ipAddress', $ipAddress)->first();
         //check for store unique ip address
-        if (! $existIp) {
+        if (!$existIp) {
             JobApply::create([
                 'job_id' => $id,
                 'ipAddress' => $ipAddress,

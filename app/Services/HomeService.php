@@ -24,5 +24,7 @@ class HomeService
             ->orWhere('location', 'like', "$query%")
             ->orWhere('salary', 'like', "$query%")
             ->get();
+
+        return compact('jobs');
     }
 }
