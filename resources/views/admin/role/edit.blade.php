@@ -39,7 +39,8 @@
                                                 <label class="col-md-2 col-form-label" for="simpleinput">Name</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="name" id="simpleinput"
-                                                           class="form-control" value="{{ $role->name }}" placeholder="Role name">
+                                                        class="form-control" value="{{ $role->name }}"
+                                                        placeholder="Role name">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -51,9 +52,12 @@
                                                 <hr>
                                                 @foreach ($permissions as $permission)
                                                     <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" name="permissions[]" {{$role->hasPermissionTo($permission->name) ? 'checked' : ''}} id="checkPermission{{ $permission->id }}" value="{{ $permission->name }}">
+                                                        <input type="checkbox" class="form-check-input" name="permissions[]"
+                                                            {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}
+                                                            id="checkPermission{{ $permission->id }}"
+                                                            value="{{ $permission->name }}">
                                                         <label class="form-check-label"
-                                                               for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
+                                                            for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -79,3 +83,18 @@
 
     </div>
 @endsection
+@push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("#checkPermissionAll").click(function() {
+
+            if ($(this).is(':checked')) {
+                // check all the checkbox
+                $('input[type=checkbox]').prop('checked', true);
+            } else {
+                // un check all the checkbox
+                $('input[type=checkbox]').prop('checked', false);
+            }
+        });
+    </script>
+@endpush
