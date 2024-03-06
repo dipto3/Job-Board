@@ -43,41 +43,44 @@
                                         <th>Title</th>
                                         <th>Category</th>
                                         <th>Subscriber Email</th>
-                                        <th>Action</th>
+                                        @can('delete-subscriber')
+                                            <th>Action</th>
+                                        @endcan
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
                                     @foreach ($subscribers as $key => $subscriber)
-                                   
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{  $subscriber->category->name }}</td>
-                                        <td>{{  $subscriber->email }}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="button-list col-md-2 ml-1">
-                                                    <form action="" method="post">
-                                                        {{-- @csrf
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $subscriber->category->name }}</td>
+                                            <td>{{ $subscriber->email }}</td>
+                                            @can('delete-subscriber')
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="button-list col-md-2 ml-1">
+                                                            <form action="" method="post">
+                                                                {{-- @csrf
                                                             @method('delete') --}}
 
-                                                        <button type="submit"
-                                                            class="btn btn-icon waves-effect btn-secondary show-alert-delete-box btn-sm"
-                                                            data-toggle="tooltip" title='Delete'><i
-                                                                style="font-size: 14px; " class="fas fa-trash"></i>
-                                                        </button>
+                                                                <button type="submit"
+                                                                    class="btn btn-icon waves-effect btn-secondary show-alert-delete-box btn-sm"
+                                                                    data-toggle="tooltip" title='Delete'><i
+                                                                        style="font-size: 14px; " class="fas fa-trash"></i>
+                                                                </button>
 
-                                                    </form>
+                                                            </form>
 
-                                                    {{-- </div> --}}
-                                                    {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
+                                                            {{-- </div> --}}
+                                                            {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
                                                     <i class="fas fa-edit"></i>
                                                 </div> --}}
-                                                </div>
+                                                        </div>
 
-                                        </td>
-                                    </tr>
+                                                </td>
+                                            @endcan
+                                        </tr>
                                     @endforeach
 
                                 </tbody>

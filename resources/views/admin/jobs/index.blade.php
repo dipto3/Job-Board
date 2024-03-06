@@ -18,7 +18,7 @@
                                 </ol>
                             </div>
                             <h4 class="page-title">Job List </h4>
-                           
+
 
                         </div>
 
@@ -38,15 +38,17 @@
                                     package, <a href="{{ route('package') }}" style="color:rgb(201, 15, 15);"><u>Please
                                             Buy Premium Package</u></a></strong>
                             </p>
+                        @elseif (Auth::user()->role_id == 2)
+                            <p class="col " style="float: left;color:rgb(201, 15, 15); text-align:center;"><strong>You are
+                                    using {{ Auth::user()->companyInfo->package->name }} Package</strong></p>
                         @endif
 
                         <div class="card-box table-responsive">
-
-                            <a href="{{ route('job.create') }}" type="button" style="float: right;"
-                                class="col-md-2 btn btn-info  waves-effect waves-light">Add New<i
-                                    class="mdi mdi-plus"></i></a>
-
-
+                            @can('create-job')
+                                <a href="{{ route('job.create') }}" type="button" style="float: right;"
+                                    class="col-md-2 btn btn-info  waves-effect waves-light">Add New<i
+                                        class="mdi mdi-plus"></i></a>
+                            @endcan
 
                             <table id="datatable" class="table table-bordered  dt-responsive nowrap"
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">

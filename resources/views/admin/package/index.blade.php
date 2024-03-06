@@ -18,7 +18,7 @@
                                 </ol>
                             </div>
                             <h4 class="page-title">Package List</h4>
-
+                            <a class="btn btn-primary" href="{{ route('package') }}">Buy Package</a>
                         </div>
 
                     </div>
@@ -33,10 +33,11 @@
 
 
                         <div class="card-box table-responsive">
-
-                            <a href="{{ route('package.create') }}" type="button" style="float: right;"
-                                class="col-md-2 btn btn-info  waves-effect waves-light">Add New<i
-                                    class="mdi mdi-plus"></i></a>
+                            @can('create-package')
+                                <a href="{{ route('package.create') }}" type="button" style="float: right;"
+                                    class="col-md-2 btn btn-info  waves-effect waves-light">Add New<i
+                                        class="mdi mdi-plus"></i></a>
+                            @endcan
 
 
 
@@ -49,8 +50,13 @@
                                         <th>Package Name</th>
                                         <th>Limit</th>
                                         <th>Price</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        @can('edit-package')
+                                            <th>Status</th>
+                                        @endcan
+                                        @can('delete-package')
+                                            <th>Action</th>
+                                        @endcan
+
                                     </tr>
                                 </thead>
 
@@ -62,45 +68,52 @@
                                             <td>{{ $package->name }}</td>
                                             <td>{{ $package->limit }}</td>
                                             <td>{{ $package->price }}</td>
+                                            @can('edit-package')
+                                                <td>
+                                                    <label class="switch">
+                                                        <input class="switch_change" name="status" id="{{ $package->id }}"
+                                                            value="{{ $package->status }}" data-onstyle="info" type="checkbox"
+                                                            @php if ($package->status == 1) echo "checked"; @endphp>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                            @endcan
                                             <td>
-                                                <label class="switch">
-                                                    <input class="switch_change" name="status" id="{{ $package->id }}"
-                                                        value="{{ $package->status }}" data-onstyle="info" type="checkbox"
-                                                        @php if ($package->status == 1) echo "checked"; @endphp>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="button-list col-md-3 ml-1">
-                                                        <a href="{{ route('package.edit', $package->id) }}">
-                                                            <button type="button"
-                                                                class="btn btn-icon waves-effect btn-secondary btn-sm"><i
-                                                                    style="font-size: 14px;" class="fas fa-edit"></i>
-                                                            </button></a>
+                                                @can('edit-package')
+                                                    <div class="row">
+                                                        <div class="button-list col-md-3 ml-1">
+                                                            <a href="{{ route('package.edit', $package->id) }}">
+                                                                <button type="button"
+                                                                    class="btn btn-icon waves-effect btn-secondary btn-sm"><i
+                                                                        style="font-size: 14px;" class="fas fa-edit"></i>
+                                                                </button></a>
 
-                                                    </div>
-                                                    <div class="button-list col-md-2 ml-1">
-                                                        <form action="{{ route('package.destroy', $package->id) }}"
-                                                            method="post">
-                                                            @csrf
-                                                            @method('delete')
+                                                        </div>
+                                                    @endcan
+                                                    @can('delete-package')
+                                                        <div class="button-list col-md-2 ml-1">
+                                                            <form action="{{ route('package.destroy', $package->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('delete')
 
-                                                            <button type="submit"
-                                                                class="btn btn-icon waves-effect btn-secondary show-alert-delete-box btn-sm"
-                                                                data-toggle="tooltip" title='Delete'><i
-                                                                    style="font-size: 14px; " class="fas fa-trash"></i>
-                                                            </button>
+                                                                <button type="submit"
+                                                                    class="btn btn-icon waves-effect btn-secondary show-alert-delete-box btn-sm"
+                                                                    data-toggle="tooltip" title='Delete'><i
+                                                                        style="font-size: 14px; " class="fas fa-trash"></i>
+                                                                </button>
 
-                                                        </form>
+                                                            </form>
 
-                                                        {{-- </div> --}}
-                                                        {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
+                                                        </div>
+                                                    @endcan
+                                                    {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
                                                     <i class="fas fa-edit"></i>
                                                 </div> --}}
-                                                    </div>
+                                                </div>
 
                                             </td>
+
                                         </tr>
                                     @endforeach
 
