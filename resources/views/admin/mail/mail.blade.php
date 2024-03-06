@@ -18,7 +18,7 @@
     <p><strong>Employment Type:</strong> {{ $job->employment_type }}</p>
     <p><strong>Experience:</strong> {{ $job->experience }}</p>
     <p><strong>Gender:</strong> {{ $job->gender }}</p>
-    <p><strong>Description:</strong> {{ $job->description }}</p>
+    <p><strong>Description:</strong> {!! $job->description !!}</p>
 
     <p><a href="{{ route('job.description', $job->uuid) }}">View Job</a></p>
 </body>

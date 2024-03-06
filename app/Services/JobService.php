@@ -57,7 +57,8 @@ class JobService
             'link' => $request->link,
         ]);
         //Get category for Send mail to the subscriber 
-        $subscribers = Subscriber::where('category_id', $request->category)->get();
+        $subscribers = Subscriber::where('category_id', $request->category_id)->get();
+
         foreach ($subscribers as $subscriber) {
 
             Mail::to($subscriber->email)->send(new JobPost($job));
