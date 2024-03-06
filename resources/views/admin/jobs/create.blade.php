@@ -91,7 +91,7 @@
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label" for="example-number">salary</label>
                                                 <div class="col-md-10">
-                                                    <input class="form-control" id="example-number" type="number"
+                                                    <input class="form-control" id="example-number" type="text"
                                                         name="salary" placeholder="10000-20000 BDT."
                                                         value="{{ old('salary') }}">
                                                     @error('salary')

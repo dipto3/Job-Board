@@ -29,7 +29,9 @@ class JobService
         $packageID = $loggedInUser->companyInfo->package->id;
         // dd($packageID);
 
+        //Existing package's job post count 
         $packageJobsCount = Job::where('package_id', $loggedInUser->companyInfo->package->id)->count();
+
         if ($packageJobsCount >= $jobLimit) {
             return false; // Job posting limit over
         }
@@ -53,7 +55,7 @@ class JobService
             'status' => $request->status,
             'link' => $request->link,
         ]);
-
+        //Get category for Send mail to the subscriber 
         $subscribers = Subscriber::where('category_id', $request->category)->get();
         foreach ($subscribers as $subscriber) {
             Mail::to($subscriber->email)->send(new JobPost($job));
@@ -62,10 +64,12 @@ class JobService
         return $job;
     }
 
+    
+
     public function getAllJob()
     {
         //If role admin then show all jobs
-        if (Auth::user()->role === 'Admin') {
+        if (Auth::user()->role_id == 1) {
             $jobs = Job::orderBy('id', 'DESC')->get();
             //Specific job's view count
             foreach ($jobs as $job) {

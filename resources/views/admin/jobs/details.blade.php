@@ -68,7 +68,7 @@
 
                                             <div class="form-group row">
                                                 <label class="col-md-2 col-form-label" for="example-placeholder">
-                                                    
+
                                                     Apply Button's total Click</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="tags[]" id="example-placeholder"
@@ -105,7 +105,7 @@
                                                 <label class="col-md-2 col-form-label">Employment Type</label>
                                                 <div class="col-md-10">
                                                     <select class="form-control" name="employment_type" readonly>
-                                                        <option>{{ $job->experience }}</option>
+                                                        <option>{{ $job->employment_type }}</option>
 
                                                     </select>
 
@@ -139,7 +139,7 @@
                                                 <label class="col-md-2 col-form-label" for="example-date">Deadline</label>
                                                 <div class="col-md-10">
                                                     <input class="form-control" id="example-date" name="deadline"
-                                                        value="{{ \Carbon\Carbon::parse($job->published)->format('d F, Y (l)') }}"
+                                                        value="{{ \Carbon\Carbon::parse($job->deadline)->format('d F, Y (l)') }}"
                                                         readonly>
                                                 </div>
                                             </div>
