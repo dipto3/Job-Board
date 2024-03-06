@@ -29,15 +29,7 @@ class JobService
         $packageID = $loggedInUser->companyInfo->package->id;
         // dd($packageID);
 
-        $packageJobsCount = Job::where('jobs.user_id', $loggedInUser->id)
-            ->join('company_infos', 'jobs.user_id', '=', 'company_infos.user_id')
-            ->where('company_infos.package_id', $loggedInUser->companyInfo->package->id)
-            ->count();
-        // dd($packageJobsCount);
-        // Check if user's job post limit over
-        // if ($loggedInUser->jobs->count() >= $jobLimit) {
-        //     return false; // Job posting limit over
-        // }
+        $packageJobsCount = Job::where('package_id', $loggedInUser->companyInfo->package->id)->count();
         if ($packageJobsCount >= $jobLimit) {
             return false; // Job posting limit over
         }
@@ -48,6 +40,7 @@ class JobService
             'category_id' => $request->category_id,
             'uuid' => Str::uuid()->toString(),
             'user_id' => $loggedInUser->id,
+            'package_id' => $packageID,
             'tags' => $tags,
             'location' => $request->location,
             'published' => $request->published,

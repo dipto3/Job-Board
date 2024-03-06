@@ -36,6 +36,7 @@
                                 <div class="account-content mt-4">
                                     <form class="form-horizontal" action="{{ route('login') }}" method="post">
                                         @csrf
+                                        
                                         <div class="form-group row">
                                             <div class="col-12">
                                                 <label for="emailaddress">Email address</label>

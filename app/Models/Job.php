@@ -11,6 +11,7 @@ class Job extends Model
 
     protected $fillable = [
         'user_id',
+        'package_id',
         'category_id',
         'title',
         'uuid',

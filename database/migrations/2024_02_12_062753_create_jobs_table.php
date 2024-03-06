@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('title');
             $table->string('uuid');
+            $table->integer('package_id');
             $table->string('tags');
             $table->string('location');
             $table->dateTime('published');
