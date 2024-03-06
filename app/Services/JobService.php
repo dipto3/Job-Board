@@ -22,17 +22,18 @@ class JobService
 
     public function storeJob($request)
     {
-
+        // dd($request->all());
         $loggedInUser = Auth::user();
 
         $jobLimit = $loggedInUser->companyInfo->package->limit;
         $packageID = $loggedInUser->companyInfo->package->id;
-        // dd($packageID);
+
 
         //Existing package's job post count 
-        $packageJobsCount = Job::where('package_id', $loggedInUser->companyInfo->package->id)->count();
-
+        $packageJobsCount = Job::where('user_id', $loggedInUser->id)->where('package_id', $loggedInUser->companyInfo->package->id)->count();
+        // dd($packageJobsCount);
         if ($packageJobsCount >= $jobLimit) {
+
             return false; // Job posting limit over
         }
         $tags = implode(',', $request->tags);
@@ -58,13 +59,14 @@ class JobService
         //Get category for Send mail to the subscriber 
         $subscribers = Subscriber::where('category_id', $request->category)->get();
         foreach ($subscribers as $subscriber) {
+
             Mail::to($subscriber->email)->send(new JobPost($job));
         }
 
         return $job;
     }
 
-    
+
 
     public function getAllJob()
     {
